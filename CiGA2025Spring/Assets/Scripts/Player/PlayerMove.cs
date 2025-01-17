@@ -1,72 +1,79 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public bool CanMove { get; set; }
-    public Vector2 MovementDir { get; set; }
-    private Vector2 velocity;
-    private Vector2 resistance;
-    public Vector2 Velocity
-    {
-        get
-        {
-            return velocity;
-        }
-        set
-        {
-            if (value.magnitude > PlayerMaxSpeed)
-            {
-                velocity = value.normalized * PlayerMaxSpeed;
-            }
-            else
-            {
-                velocity = value;
-            }
-        }
-    }
-    [SerializeField]
+    public float moveSpeed = 5f;
+    public float dashSpeed = 10f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 1f;
+
+    private float dashTime = 0f;
+    private bool isDashing = false;
+    private Vector2 dashDirection;
+
     private Rigidbody2D rb;
-    private const float PlayerMovementSpeedTemp = 0.9f;
-    private const float ResFactor = 0.3f;
-    private const float PlayerMaxSpeed = 2.6f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        Move();
+        HandleMovement();
+        HandleDash();
     }
 
-    private void Move()
+    void HandleMovement()
     {
-        MovementDir =
-            (Input.GetKey(KeyCode.W) ? 1 : 0) * Vector2.up +
-            (Input.GetKey(KeyCode.S) ? 1 : 0) * Vector2.down +
-            (Input.GetKey(KeyCode.D) ? 1 : 0) * Vector2.right +
-            (Input.GetKey(KeyCode.A) ? 1 : 0) * Vector2.left;
-        Velocity += MovementDir.normalized * PlayerMovementSpeedTemp;
-        if (Velocity != Vector2.zero)
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        Vector2 moveDirection = new Vector2(horizontal, vertical).normalized;
+
+        if (isDashing)
         {
-            resistance = -Velocity.normalized * ResFactor;
+            rb.velocity = dashDirection * dashSpeed;
         }
         else
         {
-            resistance = Vector2.zero;
+            rb.velocity = moveDirection * moveSpeed;
         }
-        if (MovementDir == Vector2.zero && velocity.sqrMagnitude < resistance.magnitude)
+    }
+
+    void HandleDash()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0f)
         {
-            Velocity = Vector2.zero;
+            StartDash();
         }
-        else
+
+        if (dashTime > 0f)
         {
-            Velocity += resistance;
+            dashTime -= Time.deltaTime;
         }
-        rb.velocity = Velocity;
+    }
+
+    void StartDash()
+    {
+        isDashing = true;
+        dashTime = dashDuration;
+
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        dashDirection = new Vector2(horizontal, vertical).normalized;
+
+        if (dashDirection == Vector2.zero)
+        {
+            dashDirection = Vector2.right;
+        }
+
+        Invoke("EndDash", dashDuration);
+    }
+
+    void EndDash()
+    {
+        isDashing = false;
+        dashTime = dashCooldown;
     }
 }
