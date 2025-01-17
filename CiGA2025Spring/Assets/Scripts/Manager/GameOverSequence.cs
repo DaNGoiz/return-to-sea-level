@@ -11,7 +11,11 @@ public class GameOverSequence : MonoBehaviour
 
     private void GameOver()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Summary", UnityEngine.SceneManagement.LoadSceneMode.Additive);
-        // 传输距离，
+        Debug.Log("GameOver");
+        if (UnityEngine.SceneManagement.SceneManager.GetSceneByName("Summary").isLoaded == false)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Summary", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        }
+        // 传输距离，把信息加入排行榜
     }
 }

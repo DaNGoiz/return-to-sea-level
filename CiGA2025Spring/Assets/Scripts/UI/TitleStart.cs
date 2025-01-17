@@ -7,7 +7,10 @@ public class TitleStart : MonoBehaviour
     void Start()
     {
         // Cursor.visible = false;
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Game", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        if (UnityEngine.SceneManagement.SceneManager.GetSceneByName("Game").isLoaded == false)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Game", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        }
     }
     void Update()
     {

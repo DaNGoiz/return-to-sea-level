@@ -9,7 +9,7 @@ public class SummaryRestartUI : MonoBehaviour
 
     void Start()
     {
-        restartButton = transform.Find("RestartButton").GetComponent<Button>();
+        restartButton = GetComponent<Button>();
         restartButton.onClick.AddListener(() =>
         {
             Messenger.Broadcast(MsgType.GameRestart);
