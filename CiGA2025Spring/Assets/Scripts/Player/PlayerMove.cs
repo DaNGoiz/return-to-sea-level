@@ -76,4 +76,9 @@ public class PlayerMove : MonoBehaviour
         isDashing = false;
         dashTime = dashCooldown;
     }
+
+    public Vector2 GetMoveDirection()
+    {
+        return rb.velocity.normalized;
+    }
 }

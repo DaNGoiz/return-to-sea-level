@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class PlayerHurt : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Hurt()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // 玩家闪烁，播放漏气动画
+        // 移动转向，冲刺喷气
     }
 }
