@@ -12,12 +12,12 @@ public abstract class PickableObject : UnderwaterObject
     }
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<IPicker>() && CanPick)
+        if (collision.TryGetComponent(out IPicker picker) && CanPick)
         {
-            Pick();
+            Pick(picker.playerNum);
         }
     }
-    protected virtual void Pick()
+    protected virtual void Pick(int playerNum)
     {
         CanPick = false;
     }
