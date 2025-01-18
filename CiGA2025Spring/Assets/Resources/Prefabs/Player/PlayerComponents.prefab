@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 4011846192122812533}
   - component: {fileID: 6993764545261946544}
   - component: {fileID: 8319643993792382537}
+  - component: {fileID: 2630217125707901898}
   m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
@@ -348,12 +349,12 @@ SpriteRenderer:
   m_SortingLayerID: -455497881
   m_SortingLayer: 4
   m_SortingOrder: 10
-  m_Sprite: {fileID: 153943050, guid: a1458942f676c0b4dbc95f6173bdad13, type: 3}
+  m_Sprite: {fileID: 432216397, guid: a1458942f676c0b4dbc95f6173bdad13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -371,6 +372,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc512eedc8f462e40850b14e96464843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2630217125707901898
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2719120702550787587}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85a255f38cc517845aedca05f3670c61, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3140998727016744417
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,8 +454,8 @@ Transform:
   m_GameObject: {fileID: 3643334657479605843}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.29492, z: 0}
+  m_LocalScale: {x: 0.69359, y: 0.69359, z: 0.69359}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4011846192122812533}
@@ -523,8 +545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f3534c597db554ca60dbc5219f2dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  dashSpeed: 10
+  moveSpeed: 2
+  dashSpeed: 7
   dashDuration: 0.2
   dashCooldown: 1
   rotationSpeed: 10
