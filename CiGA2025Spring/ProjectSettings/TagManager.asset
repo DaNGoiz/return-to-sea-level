@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: RollingMap_0
+    uniqueID: 1369412571
+    locked: 0
+  - name: RollingMap_1
+    uniqueID: 1529963893
+    locked: 0
+  - name: RollingMap_2
+    uniqueID: 544120343
+    locked: 0
+  - name: Entity
+    uniqueID: 3839469415
+    locked: 0
