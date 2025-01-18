@@ -16,11 +16,10 @@ public class LoadPlayerList : MonoBehaviour
         {
             var record = records[i];
             var go = Instantiate(singleRecordPrefab, transform);
-            Debug.Log(record.name1 + " " + record.name2 + " " + record.distance);
+            go.transform.localPosition = new Vector3(0, -(i-1) * 100, 0);
             go.GetComponent<SinglePlayeRankrUI>().SetPlayerInfo(i + 1, (int)record.distance, record.name1, record.name2);
             
         }
-
     }
 
     private List<(string name1, string name2, float distance)> LoadAllRecord()

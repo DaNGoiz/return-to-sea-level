@@ -21,11 +21,11 @@ public class InputNameEnsureButton : MonoBehaviour
             string name1 = inputField1.text;
             string name2 = inputField2.text;
 
-            var files = ES3.GetFiles();
-            foreach (var file in files)
-            {
-                ES3.DeleteFile(file);
-            }
+            // var files = ES3.GetFiles();
+            // foreach (var file in files)
+            // {
+            //     ES3.DeleteFile(file);
+            // }
             Save(name1, name2, GlobalData.Distance);
 
             List<(string name1, string name2, float distance)> records = LoadAllRecord();
