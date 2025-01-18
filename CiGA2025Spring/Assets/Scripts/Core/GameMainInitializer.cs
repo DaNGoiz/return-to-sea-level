@@ -15,5 +15,7 @@ public class GameMainInitializer : MonoBehaviour
         Object.Instantiate(Resources.Load<GameObject>("Prefabs/Player/PlayerComponents"));
         //初始化UI
         Object.Instantiate(Resources.Load<GameObject>("Prefabs/UI/Canvas"));
+        //初始化物体生成器
+        Object.Instantiate(Resources.Load<GameObject>("Prefabs/Map/ObjectGenerator"));
     }
 }

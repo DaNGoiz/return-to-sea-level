@@ -50,6 +50,9 @@ TagManager:
   - name: RollingMap_2
     uniqueID: 544120343
     locked: 0
+  - name: UnderwaterObject
+    uniqueID: 1609639563
+    locked: 0
   - name: Entity
     uniqueID: 3839469415
     locked: 0
