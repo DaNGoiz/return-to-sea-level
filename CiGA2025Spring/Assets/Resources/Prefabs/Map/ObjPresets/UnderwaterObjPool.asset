@@ -15,3 +15,4 @@ MonoBehaviour:
   objPresets:
   - {fileID: 11400000, guid: de452bc3767da9c47822b0331506fc73, type: 2}
   - {fileID: 11400000, guid: 03943664bd52bc44dae6e5162a29240d, type: 2}
+  - {fileID: 11400000, guid: a77c18b57a8e13546a42b6ab4e47d68a, type: 2}
