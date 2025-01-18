@@ -10,7 +10,9 @@ public static class MapInitializer
         Object.Instantiate(Resources.Load<GameObject>(GlobalData.PrefabRoot + "Map/MapManager"));
         //初始化地图管理器
         MapManager.Instance.Init();
-        //添加地图管理器所有“开始游戏”相关的初始化逻辑到GameStart事件的监听
-        Messenger.AddListener(MsgType.GameRestart, MapManager.StartRolling);
+        //添加地图管理器逻辑到相关事件的监听
+        //Messenger.AddListener(MsgType.GameStart, () => MapManager.Roll = true);
+        Messenger.AddListener(MsgType.GameOver, () => MapManager.Roll = false);
+        Messenger.AddListener(MsgType.GameRestart, MapManager.Instance.ResetMap);
     }
 }

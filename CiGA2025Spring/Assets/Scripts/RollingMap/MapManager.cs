@@ -6,20 +6,24 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     public static MapManager Instance;
+    public static bool Roll { get; set; }
     private static GameObject mapGo;
     private readonly List<MapGroup> mapGroups = new();
     private void Awake()
     {
         Instance = this;
-        mapGroups.Add(new MapGroup("RollingMap_Image", 8f));
+        mapGroups.Add(new MapGroup("RollingMap_Image", 1f));
     }
     private void FixedUpdate()
     {
         //更新玩家前进距离
         //地图滚动
-        foreach (MapGroup group in mapGroups)
+        if (Roll)
         {
-            group.Roll();
+            foreach (MapGroup group in mapGroups)
+            {
+                group.Roll();
+            }
         }
     }
     public void Init()
@@ -32,9 +36,13 @@ public class MapManager : MonoBehaviour
         //初始化地图滚动速度
         GlobalData.MapRollingSpeed = GlobalData.DefaultMapRollingSpeed;
     }
-    public static void StartRolling()
+    public void ResetMap()
     {
-
+        Roll = false;
+        foreach (MapGroup group in mapGroups)
+        {
+            group.Reset();
+        }
     }
     class MapGroup
     {
@@ -77,6 +85,15 @@ public class MapManager : MonoBehaviour
             InstNewMap(Vector3.zero);
             InstNewMap(new Vector3(0, 16));
             InstNewMap(new Vector3(0, 32));
+        }
+        public void Reset()
+        {
+            int c = 0;
+            foreach(GameObject go in mapImgs)
+            {
+                go.transform.position = new Vector3(0, 16 * c);
+                c++;
+            }
         }
     }
 }
