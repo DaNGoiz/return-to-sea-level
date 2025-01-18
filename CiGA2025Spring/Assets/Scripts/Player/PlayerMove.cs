@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float dashSpeed = 10f;
-    public float dashDuration = 0.2f;
-    public float dashCooldown = 1f;
-    public float rotationSpeed = 10f;
+    [SerializeField]
+    private float moveSpeed = 5f;
+    private float dashSpeed = 10f;
+    private float dashDuration = 0.2f;
+    private float dashCooldown = 1f;
+    private float rotationSpeed = 10f;
+    private int playerNum;
 
     private float dashTime = 0f;
     private bool isDashing = false;
@@ -22,9 +24,19 @@ public class PlayerMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteTransform = transform.Find("Sprite");
-        playerOriginalPosition = new Vector3(-2.5f, 0, 0); //p1
+        
         Messenger.AddListener(MsgType.ResetPlayer, ResetPlayer);
-        Messenger.AddListener(MsgType.GameOver, PlayerGameOver);
+        // Messenger.AddListener(MsgType.GameOver, PlayerGameOver);
+        if (playerNum == 1) 
+        {
+            playerOriginalPosition = new Vector3(-2.5f, 0, 0);
+            Messenger.AddListener(MsgType.Player1IsDying, PlayerGameOver);
+        }
+        else if (playerNum == 2)
+        {
+            playerOriginalPosition = new Vector3(2.5f, 0, 0);
+            Messenger.AddListener(MsgType.Player2IsDying, PlayerGameOver);
+        }
     }
 
     private void ResetPlayer()
@@ -34,13 +46,17 @@ public class PlayerMove : MonoBehaviour
         dashTime = 0f;
         rb.velocity = Vector2.zero;
         transform.position = playerOriginalPosition;
-        Debug.Log("PlayerMove ResetPlayer");
     }
 
     private void PlayerGameOver()
     {
-        Debug.Log("PlayerMove PlayerGameOver");
         canMove = false;
+        rb.velocity = Vector2.zero;
+        if (playerNum == 1)
+        {
+            // 把animation停了，sprite换成死亡的sprite
+            
+        }
     }
 
     void Update()
@@ -99,7 +115,7 @@ public class PlayerMove : MonoBehaviour
     {
         isDashing = true;
         dashTime = dashDuration;
-        Messenger.Broadcast<bool>(MsgType.Player1Dash, isDashing);
+        // Messenger.Broadcast<bool>(MsgType.Player1Dash, isDashing);
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -124,7 +140,7 @@ public class PlayerMove : MonoBehaviour
     {
         isDashing = false;
         dashTime = dashCooldown;
-        Messenger.Broadcast<bool>(MsgType.Player1Dash, isDashing);
+        // Messenger.Broadcast<bool>(MsgType.Player1Dash, isDashing);
     }
 
     public Vector2 GetMoveDirection()

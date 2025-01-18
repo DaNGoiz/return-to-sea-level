@@ -42,7 +42,15 @@ public class BubbleBar : MonoBehaviour
 
         if (bubbleValue == 0)
         {
-            Messenger.Broadcast(MsgType.GameOver);
+            if (playerNum == 1)
+            {
+                Messenger.Broadcast(MsgType.Player1IsDying);
+            }
+            else
+            {
+                Messenger.Broadcast(MsgType.Player2IsDying);
+            }
+            // Messenger.Broadcast(MsgType.GameOver);
         }
     }
 
