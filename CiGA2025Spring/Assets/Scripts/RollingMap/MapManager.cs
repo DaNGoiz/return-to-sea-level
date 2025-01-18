@@ -48,6 +48,7 @@ public class MapManager : MonoBehaviour
             group.Reset();
         }
         Messenger.Broadcast(MsgType.ResetPlayer);
+        Messenger.Broadcast(MsgType.ResetMap);
     }
     class MapGroup
     {
@@ -94,6 +95,7 @@ public class MapManager : MonoBehaviour
         public void Reset()
         {
             int c = 0;
+            rollingDistance = 0;
             foreach(GameObject go in mapImgs)
             {
                 go.transform.position = new Vector3(0, 16 * c);

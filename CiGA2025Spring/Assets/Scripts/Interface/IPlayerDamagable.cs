@@ -19,7 +19,7 @@ public class IPlayerDamagable : IDamagable
             {
                 Messenger.Broadcast(MsgType.Player2Hurt);
             }
-            Messenger.Broadcast(MsgType.ChangeBubbleBar, playerID, atkData.dmg);
+            Messenger.Broadcast(MsgType.ChangeBubbleBar, playerID, -atkData.dmg);
         }
     }
     private void Start()
