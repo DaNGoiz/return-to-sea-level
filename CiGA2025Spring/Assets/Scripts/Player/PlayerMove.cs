@@ -128,6 +128,11 @@ public class PlayerMove : MonoBehaviour
         if (dashDirection == Vector2.zero)
         {
             dashDirection = Vector2.up;
+
+            GameObject bubblePrefab = Resources.Load<GameObject>("Prefabs/Map/LittleBubble");
+            GameObject bubbleInstance = Instantiate(bubblePrefab, transform.position, Quaternion.identity);
+            bubbleInstance.AddComponent<PlayerBubbleTrail>();
+            bubbleInstance.GetComponent<PlayerBubbleTrail>().SetDirection(Vector2.down);
         }
 
         if (dashDirection != Vector2.zero)
@@ -135,6 +140,12 @@ public class PlayerMove : MonoBehaviour
             float targetAngle = Mathf.Atan2(dashDirection.y, dashDirection.x) * Mathf.Rad2Deg - 90;
             Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle);
             spriteTransform.rotation = Quaternion.Slerp(spriteTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            GameObject bubblePrefab = Resources.Load<GameObject>("Prefabs/Map/LittleBubble");
+            GameObject bubbleInstance = Instantiate(bubblePrefab, transform.position, Quaternion.identity);
+            Vector2 bubbleDirection = -dashDirection;
+            bubbleInstance.AddComponent<PlayerBubbleTrail>();
+            bubbleInstance.GetComponent<PlayerBubbleTrail>().SetDirection(bubbleDirection);
         }
 
         Invoke("EndDash", dashDuration);
