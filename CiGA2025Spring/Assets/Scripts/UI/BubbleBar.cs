@@ -16,6 +16,13 @@ public class BubbleBar : MonoBehaviour
         slider = GetComponent<Slider>();
         bubbleValue = slider.value;
         Messenger.AddListener<int, float>(MsgType.ChangeBubbleBar, ChangeValue);
+        Messenger.AddListener(MsgType.ResetPlayer, ResetValue);
+    }
+
+    private void ResetValue()
+    {
+        bubbleValue = slider.maxValue;
+        slider.value = bubbleValue;
     }
 
     public void ChangeValue(int playerNum, float value)
@@ -24,7 +31,6 @@ public class BubbleBar : MonoBehaviour
         {
             return;
         }
-        Debug.Log("气泡值变化 " + value);
         bubbleValue += value;
         bubbleValue = Mathf.Clamp(bubbleValue, slider.minValue, slider.maxValue);
 
@@ -33,6 +39,11 @@ public class BubbleBar : MonoBehaviour
             StopCoroutine(changeValueCoroutine);
         }
         changeValueCoroutine = StartCoroutine(SmoothChangeValue(bubbleValue));
+
+        if (bubbleValue == 0)
+        {
+            Messenger.Broadcast(MsgType.GameOver);
+        }
     }
 
     private IEnumerator SmoothChangeValue(float targetValue)

@@ -10,21 +10,46 @@ public class PlayerMove : MonoBehaviour
 
     private float dashTime = 0f;
     private bool isDashing = false;
+    private bool canMove = true; // 目前只在死亡的时候为false
     private Vector2 dashDirection;
 
     private Rigidbody2D rb;
     private Transform spriteTransform;
 
+    private Vector3 playerOriginalPosition;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteTransform = transform.Find("Sprite");
+        playerOriginalPosition = new Vector3(-2.5f, 0, 0); //p1
+        Messenger.AddListener(MsgType.ResetPlayer, ResetPlayer);
+        Messenger.AddListener(MsgType.GameOver, PlayerGameOver);
+    }
+
+    private void ResetPlayer()
+    {
+        isDashing = false;
+        canMove = true;
+        dashTime = 0f;
+        rb.velocity = Vector2.zero;
+        transform.position = playerOriginalPosition;
+        Debug.Log("PlayerMove ResetPlayer");
+    }
+
+    private void PlayerGameOver()
+    {
+        Debug.Log("PlayerMove PlayerGameOver");
+        canMove = false;
     }
 
     void Update()
     {
-        HandleMovement();
-        HandleDash();
+        if (canMove)
+        {
+            HandleMovement();
+            HandleDash();;
+        }
     }
 
     void HandleMovement()
