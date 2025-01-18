@@ -32,6 +32,8 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - Coffee.UIEffect
+    - Febucci.TextAnimator.Runtime
     - Luban.Runtime
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0

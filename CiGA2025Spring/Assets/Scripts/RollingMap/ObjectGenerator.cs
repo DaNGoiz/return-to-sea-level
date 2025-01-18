@@ -6,7 +6,7 @@ public class ObjectGenerator : MonoBehaviour
 {
     public static ObjectGenerator Instance;
     public static bool IsEnabled { get; set; }
-    private static float GenInterval {  get; set; }
+    private static float GenInterval { get; set; }
     private static float lastGenDistance;
     private static GameObject ObjParent { get; set; }
     private void Awake()
@@ -33,6 +33,7 @@ public class ObjectGenerator : MonoBehaviour
         IsEnabled = false;
         GenInterval = GlobalData.DefaultObjGenInterval;
         ObjParent = new("UnderwaterObjects");
+        ObjParent.transform.position = new Vector3(0, 7, 0);
         UnderwaterObjPool.ObjPresets = Resources.Load<UnderwaterObjPool>("Prefabs/Map/ObjPresets/UnderwaterObjPool").objPresets;
     }
     public void ResetGenerator()

@@ -10,7 +10,6 @@ public class UnderCloud_Test : MonoBehaviour
     }
     private IEnumerator TestCor()
     {
-        ObjectGenerator.Instance.Generate();
         yield return null;
     }
 }
