@@ -12,7 +12,11 @@ public class MapManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        mapGroups.Add(new MapGroup("RollingMap_Image", 1f));
+        mapGroups.Add(new MapGroup("RollingMap_Image", 0.4f));
+        mapGroups.Add(new MapGroup("RollingMap_Image1", 0.6f));
+        mapGroups.Add(new MapGroup("RollingMap_Image2", 0.8f));
+        mapGroups.Add(new MapGroup("RollingMap_Image3", 1.1f));
+        mapGroups.Add(new MapGroup("RollingMap_Image4", 1.3f));
     }
     private void FixedUpdate()
     {

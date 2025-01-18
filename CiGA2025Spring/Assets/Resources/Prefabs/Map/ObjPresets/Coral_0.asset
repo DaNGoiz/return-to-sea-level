@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Coral_0
   m_EditorClassIdentifier: 
   datas:
-  - position: {x: 0, y: 0}
+  - randomPosition: 1
+    positionX: 0
+    randPosXMin: -7
+    randPosXMax: 7
     obj: {fileID: 1554963028272011148, guid: 8650b54485d2bca42a472c725c7a88ff, type: 3}

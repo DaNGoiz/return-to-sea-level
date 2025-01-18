@@ -7,7 +7,7 @@ public class Sugar : PickableObject
     protected override void Pick()
     {
         base.Pick();
-        Debug.Log("Ê°È¡ÂüÍ×Ë¼");
+        Messenger.Broadcast(MsgType.ChangeBubbleBar, 1, 20f);
         DestroySelf();
     }
 }
