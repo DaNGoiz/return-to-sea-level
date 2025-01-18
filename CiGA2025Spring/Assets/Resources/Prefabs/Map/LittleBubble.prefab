@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7832758035216039890}
   - component: {fileID: 6550943329497528744}
   - component: {fileID: 2572141621247778569}
+  - component: {fileID: 7031855633589699348}
   m_Layer: 9
   m_Name: LittleBubble
   m_TagString: Untagged
@@ -169,3 +170,17 @@ CircleCollider2D:
   m_Offset: {x: -0.041464567, y: -0.011832297}
   serializedVersion: 2
   m_Radius: 0.47689766
+--- !u!114 &7031855633589699348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8614211001794375962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b696ce7c361d1154e886bd8a71caa840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumn: 5
+  destroySelfAfterInflating: 1
