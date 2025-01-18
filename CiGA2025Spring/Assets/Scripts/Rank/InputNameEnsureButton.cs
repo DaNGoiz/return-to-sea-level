@@ -21,21 +21,18 @@ public class InputNameEnsureButton : MonoBehaviour
             string name1 = inputField1.text;
             string name2 = inputField2.text;
 
-            // var files = ES3.GetFiles();
-            // foreach (var file in files)
-            // {
-            //     ES3.DeleteFile(file);
-            // }
+            // Save the record to PlayerPrefs
             Save(name1, name2, GlobalData.Distance);
 
+            // Load all the records
             List<(string name1, string name2, float distance)> records = LoadAllRecord();
 
+            // Sort the records by distance in descending order
             records.Sort((a, b) => b.distance.CompareTo(a.distance));
 
+            // Find the rank for the current entry
             for (int i = 0; i < records.Count; i++)
             {
-                records[i] = (name1, name2, GlobalData.Distance);
-
                 if (records[i].name1 == name1 && records[i].name2 == name2 && records[i].distance == GlobalData.Distance)
                 {
                     int rank = i + 1;
@@ -43,53 +40,84 @@ public class InputNameEnsureButton : MonoBehaviour
                 }
             }
 
+            // Instantiate and display the rank UI
             GameObject rankPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Ranks"));
             rankPrefab.transform.SetParent(GameObject.Find("Canvas_Summary(Clone)").transform, false);
             transform.parent.gameObject.SetActive(false);
         });
     }
 
+    // Save player names and distance to PlayerPrefs
     public void Save(string p1, string p2, float distance)
     {
-        string filePath = p1 + '+' + p2;
+        string key = p1 + '+' + p2;
 
-        if (ES3.FileExists(filePath))
+        // Retrieve existing records from PlayerPrefs
+        string storedRecords = PlayerPrefs.GetString(key, string.Empty);
+        List<float> records = new List<float>();
+
+        if (!string.IsNullOrEmpty(storedRecords))
         {
-            float[] records = ES3.Load<float[]>(key: "Record", filePath: filePath);
-            
-            float[] newRecords = new float[records.Length + 1];
-            for (int i = 0; i < records.Length; i++)
+            // Convert stored records back to list of floats
+            string[] recordArray = storedRecords.Split(',');
+            foreach (var record in recordArray)
             {
-                newRecords[i] = records[i];
+                if (float.TryParse(record, out float result))
+                {
+                    records.Add(result);
+                }
             }
-            newRecords[records.Length] = distance;
+        }
 
-            ES3.Save(key: "Record", value: newRecords, filePath: filePath);
-        }
-        else
+        // Add the new distance record
+        records.Add(distance);
+
+        // Save the updated records back to PlayerPrefs
+        PlayerPrefs.SetString(key, string.Join(",", records));
+
+        // Save the list of all keys if it's the first time
+        string keyList = PlayerPrefs.GetString("AllPlayerKeys", string.Empty);
+        if (!keyList.Contains(key))
         {
-            ES3.Save(key: "Record", value: new float[1] { distance }, filePath: filePath);
+            keyList += string.IsNullOrEmpty(keyList) ? key : "," + key;
+            PlayerPrefs.SetString("AllPlayerKeys", keyList);
         }
+
+        PlayerPrefs.Save();
     }
 
+    // Load all the records from PlayerPrefs
     public List<(string name1, string name2, float distance)> LoadAllRecord()
     {
-        string[] files = ES3.GetFiles();
-        List<(string name1, string name2, float distance)> records = new();
-        string name1, name2;
-        float[] rec;
+        List<(string name1, string name2, float distance)> records = new List<(string name1, string name2, float distance)>();
 
-        foreach (string file in files)
+        // Get the list of all player pair keys
+        string keyList = PlayerPrefs.GetString("AllPlayerKeys", string.Empty);
+        if (string.IsNullOrEmpty(keyList)) return records;
+
+        string[] keys = keyList.Split(',');
+
+        // Iterate through each key and load the corresponding records
+        foreach (string key in keys)
         {
-            name1 = file.Split('+')[0];
-            name2 = file.Split('+')[1];
-            rec = ES3.Load<float[]>(key: "Record", filePath: file);
-
-            for (int i = 0; i < rec.Length; i++)
+            if (key.Contains("+"))
             {
-                records.Add((name1, name2, rec[i]));
+                string name1 = key.Split('+')[0];
+                string name2 = key.Split('+')[1];
+
+                string storedRecords = PlayerPrefs.GetString(key, string.Empty);
+                string[] recordArray = storedRecords.Split(',');
+
+                foreach (var record in recordArray)
+                {
+                    if (float.TryParse(record, out float distance))
+                    {
+                        records.Add((name1, name2, distance));
+                    }
+                }
             }
         }
+
         return records;
     }
 }

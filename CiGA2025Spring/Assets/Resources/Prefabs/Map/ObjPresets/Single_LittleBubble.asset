@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3e0bc375ebfe54cafddb451732849c, type: 3}
   m_Name: Single_LittleBubble
   m_EditorClassIdentifier: 
-  datas: []
+  datas:
+  - randomPosition: 1
+    positionX: 0
+    randPosXMin: -8
+    randPosXMax: 8
+    obj: {fileID: 8614211001794375962, guid: d9bf1899069f9084d8c24c7ed367ac09, type: 3}
