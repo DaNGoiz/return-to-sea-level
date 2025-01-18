@@ -16,6 +16,5 @@ public class GameOverSequence : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Summary", UnityEngine.SceneManagement.LoadSceneMode.Additive);
         }
-        // 传输距离，把信息加入排行榜
     }
 }

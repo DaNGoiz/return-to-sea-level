@@ -11,14 +11,14 @@ TagManager:
   - Camera
   - Water
   - UI
+  - PlayerBorder
+  - Player
   - 
+  - UnderwaterObject
   - 
+  - PlayerAtk
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerPick
   - 
   - 
   - 
@@ -40,4 +40,25 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: RollingMap_0
+    uniqueID: 1369412571
+    locked: 0
+  - name: RollingMap_1
+    uniqueID: 1529963893
+    locked: 0
+  - name: RollingMap_2
+    uniqueID: 544120343
+    locked: 0
+  - name: RollingMap_3
+    uniqueID: 1259276395
+    locked: 0
+  - name: RollingMap_4
+    uniqueID: 2592246007
+    locked: 0
+  - name: UnderwaterObject
+    uniqueID: 1609639563
+    locked: 0
+  - name: Entity
+    uniqueID: 3839469415
     locked: 0

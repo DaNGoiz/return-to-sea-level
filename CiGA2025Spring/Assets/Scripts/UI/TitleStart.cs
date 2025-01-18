@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TitleStart : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         // Cursor.visible = false;
         if (UnityEngine.SceneManagement.SceneManager.GetSceneByName("Game").isLoaded == false)
@@ -17,6 +17,7 @@ public class TitleStart : MonoBehaviour
         if (Input.anyKeyDown)
         {
             // 可以有个协程来做淡出效果，做完以后再卸载场景
+            Messenger.Broadcast(MsgType.GameStart);
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Title");
         }
     }
