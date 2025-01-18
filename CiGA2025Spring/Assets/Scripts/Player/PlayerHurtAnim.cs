@@ -57,7 +57,7 @@ public class PlayerHurtAnim : MonoBehaviour
     IEnumerator DeadCoroutine()
     {
         yield return new WaitForSeconds(1f);
-        Vector3 target = new Vector3(0, -10, 0);
+        Vector3 target = new Vector3(-15, -15, 0);
         transform.DOJump(target, 2f, -5, 1f);
         yield return new WaitForSeconds(1f);
         Messenger.Broadcast(MsgType.GameOver);
