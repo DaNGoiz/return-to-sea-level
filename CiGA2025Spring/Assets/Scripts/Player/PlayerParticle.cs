@@ -13,7 +13,7 @@ public class PlayerParticle : MonoBehaviour
         main.startSize = 0.5f;
         main.startLifetime = 1.0f;
         main.startSpeed = 1.0f;
-        Messenger.AddListener<bool>(MsgType.PlayerDash, isDashing =>
+        Messenger.AddListener<bool>(MsgType.Player1Dash, isDashing =>
         {
             if (isDashing)
             {
@@ -26,7 +26,7 @@ public class PlayerParticle : MonoBehaviour
                 main.startSpeed = 2f;
             }
         });
-        Messenger.AddListener(MsgType.PlayerHurt, () =>
+        Messenger.AddListener(MsgType.Player1Hurt, () =>
         {
             StartCoroutine(HurtCoroutine());
         });

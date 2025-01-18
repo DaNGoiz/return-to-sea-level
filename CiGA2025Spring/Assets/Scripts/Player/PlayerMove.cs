@@ -74,7 +74,7 @@ public class PlayerMove : MonoBehaviour
     {
         isDashing = true;
         dashTime = dashDuration;
-        Messenger.Broadcast<bool>(MsgType.PlayerDash, isDashing);
+        Messenger.Broadcast<bool>(MsgType.Player1Dash, isDashing);
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -99,7 +99,7 @@ public class PlayerMove : MonoBehaviour
     {
         isDashing = false;
         dashTime = dashCooldown;
-        Messenger.Broadcast<bool>(MsgType.PlayerDash, isDashing);
+        Messenger.Broadcast<bool>(MsgType.Player1Dash, isDashing);
     }
 
     public Vector2 GetMoveDirection()
