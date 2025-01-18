@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TitleStart : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         // Cursor.visible = false;
         if (UnityEngine.SceneManagement.SceneManager.GetSceneByName("Game").isLoaded == false)

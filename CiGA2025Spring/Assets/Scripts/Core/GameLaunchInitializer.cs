@@ -7,7 +7,7 @@ public class GameLaunchInitializer : MonoBehaviour
 {
     private void Awake()
     {
-        //³õÊ¼»¯µØÍ¼
-        MapInitializer.Init();
+        //ç”ŸæˆTitleManager
+        Object.Instantiate(Resources.Load<GameObject>("Prefabs/Managers/TitleManager"));
     }
 }
