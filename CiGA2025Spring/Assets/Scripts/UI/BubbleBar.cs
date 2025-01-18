@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class BubbleBar : MonoBehaviour
 {
+    [SerializeField]
+    private int playerNum;
     private float bubbleValue; // 泡泡的值
     private Slider slider;
     private Coroutine changeValueCoroutine;
@@ -13,10 +15,16 @@ public class BubbleBar : MonoBehaviour
     {
         slider = GetComponent<Slider>();
         bubbleValue = slider.value;
+        Messenger.AddListener<int, float>(MsgType.ChangeBubbleBar, ChangeValue);
     }
 
-    public void ChangeValue(float value)
+    public void ChangeValue(int playerNum, float value)
     {
+        if (this.playerNum != playerNum)
+        {
+            return;
+        }
+        Debug.Log("气泡值变化 " + value);
         bubbleValue += value;
         bubbleValue = Mathf.Clamp(bubbleValue, slider.minValue, slider.maxValue);
 
