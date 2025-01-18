@@ -441,6 +441,7 @@ GameObject:
   - component: {fileID: 1712373597547910181}
   - component: {fileID: 4150864525459451955}
   - component: {fileID: 6827668747737608736}
+  - component: {fileID: 7483660235720974305}
   m_Layer: 7
   m_Name: Player1
   m_TagString: Untagged
@@ -457,7 +458,7 @@ Transform:
   m_GameObject: {fileID: 3643334657479605843}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.29492, z: 0}
+  m_LocalPosition: {x: -2.5, y: 0, z: 0}
   m_LocalScale: {x: 0.69359, y: 0.69359, z: 0.69359}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -567,6 +568,19 @@ MonoBehaviour:
   dashCooldown: 1
   rotationSpeed: 10
   playerNum: 1
+--- !u!114 &6827668747737608736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3643334657479605843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b1dc5e6e734c064092866ec063fe838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 1
 --- !u!61 &7483660235720974305
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -612,19 +626,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6364322, y: 1.719317}
   m_EdgeRadius: 0
---- !u!114 &6827668747737608736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3643334657479605843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b1dc5e6e734c064092866ec063fe838, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
 --- !u!1 &4384103651166027696
 GameObject:
   m_ObjectHideFlags: 0
