@@ -52,6 +52,15 @@ public class ObjectGenerator : MonoBehaviour
         {
             objCache = Instantiate(data.obj);
             objCache.transform.SetParent(ObjParent.transform, false);
+            if (data.randomPosition)
+            {
+                objCache.transform.localPosition= new Vector3(
+                    Random.Range(data.randPosXMin, data.randPosXMax), 0, 0);
+            }
+            else
+            {
+                objCache.transform.localPosition = new Vector3(data.positionX, 0, 0);
+            }
         }
     }
 }

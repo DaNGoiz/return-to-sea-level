@@ -12,6 +12,9 @@ public class ObjPreset : ScriptableObject
 [System.Serializable]
 public class ObjData
 {
-    public Vector2 position;
+    public bool randomPosition;
+    public float positionX;
+    public float randPosXMin;
+    public float randPosXMax;
     public GameObject obj;
 }
