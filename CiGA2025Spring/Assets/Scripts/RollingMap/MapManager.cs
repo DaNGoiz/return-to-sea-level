@@ -16,7 +16,6 @@ public class MapManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //更新玩家前进距离
         //地图滚动
         if (Roll)
         {
@@ -24,10 +23,14 @@ public class MapManager : MonoBehaviour
             {
                 group.Roll();
             }
+            //更新玩家前进距离
+            GlobalData.Distance += GlobalData.MapRollingSpeed;
+            Debug.Log(GlobalData.Distance);
         }
     }
     public void Init()
     {
+        GlobalData.Distance = 0f;
         mapGo = Instantiate(Resources.Load<GameObject>(GlobalData.PrefabRoot + "Map/RollingMap"));
         foreach (MapGroup group in mapGroups)
         {
@@ -38,6 +41,8 @@ public class MapManager : MonoBehaviour
     }
     public void ResetMap()
     {
+        GlobalData.Distance = 0f;
+        ObjectGenerator.Instance.ResetGenerator();
         Roll = false;
         foreach (MapGroup group in mapGroups)
         {
