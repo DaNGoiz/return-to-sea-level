@@ -6,6 +6,8 @@ public static class MsgType
     public static string GameRestart = nameof(GameRestart);
     public static string GameOver = nameof(GameOver);
     public static string GameStart = nameof(GameStart);
-    public static string PlayerHurt = nameof(PlayerHurt);
-    public static string PlayerDash = nameof(PlayerDash);
+    public static string Player1Hurt = nameof(Player1Hurt);
+    public static string Player1Dash = nameof(Player1Dash);
+    public static string Player2Hurt = nameof(Player2Hurt);
+    public static string Player2Dash = nameof(Player2Dash);
 }
