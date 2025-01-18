@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BubbleBar : MonoBehaviour
 {
     [SerializeField]
-    private int playerNum;
+    public int playerNum;
     private float bubbleValue; // 泡泡的值
     private Slider slider;
     private Coroutine changeValueCoroutine;
