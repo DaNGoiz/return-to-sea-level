@@ -9,27 +9,37 @@ public class LoadPlayerList : MonoBehaviour
     
     void Start()
     {
-        singleRecordPrefab = Resources.Load<GameObject>("PlayerInfo");
+        singleRecordPrefab = Resources.Load<GameObject>("Prefabs/UI/PlayerInfo");
         records = LoadAllRecord();
         records.Sort((a, b) => b.distance.CompareTo(a.distance));
         for (int i = 0; i < records.Count && i < 10; i++)
         {
             var record = records[i];
             var go = Instantiate(singleRecordPrefab, transform);
-            go.transform.Find("Name1").GetComponent<TMPro.TextMeshProUGUI>().text = record.name1;
-            go.transform.Find("Name2").GetComponent<TMPro.TextMeshProUGUI>().text = record.name2;
-            go.transform.Find("Distance").GetComponent<TMPro.TextMeshProUGUI>().text = record.distance.ToString();
+            Debug.Log(record.name1 + " " + record.name2 + " " + record.distance);
+            go.GetComponent<SinglePlayeRankrUI>().SetPlayerInfo(i + 1, (int)record.distance, record.name1, record.name2);
+            
         }
 
     }
 
     private List<(string name1, string name2, float distance)> LoadAllRecord()
     {
-        List<(string name1, string name2, float distance)> records = new List<(string name1, string name2, float distance)>();
-        var files = ES3.GetFiles();
-        foreach (var file in files)
+        string[] files = ES3.GetFiles();
+        List<(string name1, string name2, float distance)> records = new();
+        string name1, name2;
+        float[] rec;
+
+        foreach (string file in files)
         {
-            records.Add(ES3.Load<(string name1, string name2, float distance)>(file));
+            name1 = file.Split('+')[0];
+            name2 = file.Split('+')[1];
+            rec = ES3.Load<float[]>(key: "Record", filePath: file);
+
+            for (int i = 0; i < rec.Length; i++)
+            {
+                records.Add((name1, name2, rec[i]));
+            }
         }
         return records;
     }

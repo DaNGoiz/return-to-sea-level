@@ -42,6 +42,10 @@ public class InputNameEnsureButton : MonoBehaviour
                     Debug.Log("排名为：" + rank);
                 }
             }
+
+            GameObject rankPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Ranks"));
+            rankPrefab.transform.SetParent(GameObject.Find("Canvas_Summary(Clone)").transform, false);
+            transform.parent.gameObject.SetActive(false);
         });
     }
 
@@ -51,9 +55,7 @@ public class InputNameEnsureButton : MonoBehaviour
 
         if (ES3.FileExists(filePath))
         {
-            Debug.Log("文件" + filePath + "已经存在");
             float[] records = ES3.Load<float[]>(key: "Record", filePath: filePath);
-            Debug.Log("文件" + filePath + "已经有" + records.Length + "条记录");
             
             float[] newRecords = new float[records.Length + 1];
             for (int i = 0; i < records.Length; i++)
