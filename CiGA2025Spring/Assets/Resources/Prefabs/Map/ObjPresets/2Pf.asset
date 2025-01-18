@@ -10,11 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd3e0bc375ebfe54cafddb451732849c, type: 3}
-  m_Name: Single_Puffer
+  m_Name: 2Pf
   m_EditorClassIdentifier: 
   datas:
   - randomPosition: 1
-    positionX: 0
+    position: {x: 0, y: 0}
     randPosXMin: -7
     randPosXMax: 7
+    randPosYMin: -0.5
+    randPosYMax: 0.5
+    randomScale: 1
+    randScaleMin: 0.4
+    randScaleMax: 1.2
+    randomOrientation: 1
+    obj: {fileID: 437774261480989324, guid: 20511d1fcb935de46b81c3fcd4e4231e, type: 3}
+  - randomPosition: 1
+    position: {x: 0, y: 0}
+    randPosXMin: -7
+    randPosXMax: 7
+    randPosYMin: -0.5
+    randPosYMax: 0.5
+    randomScale: 1
+    randScaleMin: 0.4
+    randScaleMax: 1.2
+    randomOrientation: 1
     obj: {fileID: 437774261480989324, guid: 20511d1fcb935de46b81c3fcd4e4231e, type: 3}
