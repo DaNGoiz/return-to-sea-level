@@ -1387,6 +1387,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -455497881
       objectReference: {fileID: 0}
+    - target: {fileID: 2982679007824085459, guid: 4d67c4769c5c71141b91136fca8816e8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4508217573975615406, guid: 4d67c4769c5c71141b91136fca8816e8, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -1402,6 +1406,14 @@ PrefabInstance:
     - target: {fileID: 7046357281176341402, guid: 4d67c4769c5c71141b91136fca8816e8, type: 3}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735194997049385096, guid: 4d67c4769c5c71141b91136fca8816e8, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735194997049385096, guid: 4d67c4769c5c71141b91136fca8816e8, type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7974631009876640259, guid: 4d67c4769c5c71141b91136fca8816e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1443,7 +1455,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1755470935770892704, guid: 4d67c4769c5c71141b91136fca8816e8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
