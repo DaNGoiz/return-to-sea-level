@@ -10,7 +10,6 @@ public class PlayerHurtAnim : MonoBehaviour
     {
         playerSprite = GetComponent<SpriteRenderer>();
         Messenger.AddListener(MsgType.PlayerHurt, PlayerHurt);
-        Messenger.Broadcast(MsgType.PlayerHurt);
     }
 
     public void PlayerHurt()
