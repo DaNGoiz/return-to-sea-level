@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38706a85853a7cc40b8102f018fd457a, type: 3}
-  m_Name: UnderwaterObjPool
+  m_Script: {fileID: 11500000, guid: bd3e0bc375ebfe54cafddb451732849c, type: 3}
+  m_Name: Single_Sugar
   m_EditorClassIdentifier: 
-  objPresets:
-  - {fileID: 11400000, guid: de452bc3767da9c47822b0331506fc73, type: 2}
-  - {fileID: 11400000, guid: 03943664bd52bc44dae6e5162a29240d, type: 2}
+  datas:
+  - position: {x: 0, y: 0}
+    obj: {fileID: 2741075193774899397, guid: 3f73cabc3eb7e7142824d085e1c5f3b5, type: 3}
