@@ -13,12 +13,14 @@ public class PlayerBubbleTrail : MonoBehaviour
     {
         float trailTime = 0.5f;
         float trailInterval = 0.1f;
-        float trailSpeed = 0.1f;
+        float trailSpeed = 0.3f;
         float elapsedTime = 0f;
         Collider2D collider = GetComponent<Collider2D>();
         collider.enabled = false;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         collider.enabled = true;
+        yield return new WaitForSeconds(0.4f);
+        trailSpeed = 0.1f;
         while (elapsedTime < trailTime)
         {
             elapsedTime += Time.deltaTime;
