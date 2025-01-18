@@ -17,26 +17,10 @@ public class PufferInflatable : IInflatable
         int bubbleNum = Random.Range(1, 4);
         for (int i = 0; i < bubbleNum; i++)
         {
-            StartCoroutine(BubbleSpread());
+            GameObject go = Instantiate(Resources.Load<GameObject>("Prefabs/Map/LittleBubble"));
+            go.AddComponent<BubbleSpread>();
+            go.transform.position = transform.position;
         }
         Destroy(gameObject);
-
-        static IEnumerator BubbleSpread()
-        {
-            Vector3 dir;
-            float speed;
-            GameObject bubbleGo;
-            speed = Random.Range(0.03f, 0.1f);
-
-            bubbleGo = Instantiate(Resources.Load<GameObject>("Prefabs/Map/LittleBubble"));
-
-            dir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-            for (int i = 0; i <= 40; i++)
-            {
-                bubbleGo.transform.position += dir * speed;
-                speed /= 10f;
-                yield return null;
-            }
-        }
     }
 }
