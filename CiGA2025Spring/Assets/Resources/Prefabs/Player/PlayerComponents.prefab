@@ -372,6 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc512eedc8f462e40850b14e96464843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNum: 1
 --- !u!95 &2630217125707901898
 Animator:
   serializedVersion: 5
@@ -561,10 +562,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  dashSpeed: 7
+  dashSpeed: 10
   dashDuration: 0.2
   dashCooldown: 1
   rotationSpeed: 10
+  playerNum: 1
 --- !u!61 &7483660235720974305
 BoxCollider2D:
   m_ObjectHideFlags: 0
