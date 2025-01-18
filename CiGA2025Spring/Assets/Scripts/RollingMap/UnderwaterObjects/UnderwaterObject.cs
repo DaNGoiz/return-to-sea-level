@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class UnderwaterObject : MonoBehaviour
 {
-    protected virtual void OnSelfDestroyed()
+    private void OnDestroy()
     {
         Messenger.RemoveListener(MsgType.ResetMap, DestroySelf);
     }
@@ -23,9 +23,8 @@ public abstract class UnderwaterObject : MonoBehaviour
             }
         }
     }
-    protected void DestroySelf()
+    protected virtual void DestroySelf()
     {
-        OnSelfDestroyed();
         Destroy(gameObject);
     }
 }
