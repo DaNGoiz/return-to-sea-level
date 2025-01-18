@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IAttacker : MonoBehaviour
+public abstract class IAttacker : MonoBehaviour
 {
-    public string dmgSource;
-    public float dmg;
-    private void OnTriggerEnter2D(Collider2D other)
+    protected abstract void OnTriggerEnter2D(Collider2D other);
+    protected void TryAttack(Collider2D other, string dmgSource, float dmg)
     {
         if (other.TryGetComponent(out IDamagable idmg))
         {

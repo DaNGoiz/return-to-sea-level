@@ -25,7 +25,6 @@ public class MapManager : MonoBehaviour
             }
             //更新玩家前进距离
             GlobalData.Distance += GlobalData.MapRollingSpeed;
-            Debug.Log(GlobalData.Distance);
         }
     }
     public void Init()
