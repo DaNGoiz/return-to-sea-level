@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class IPlayerDamagable : IDamagable
 {
-    //Íæ¼ÒÐòºÅ£¬±ê¼ÇÍæ¼Ò1»¹ÊÇÍæ¼Ò2
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2
     [SerializeField]
     private int playerID;
     public override void Damage(AtkData atkData)
     {
         if (CanHurt)
         {
-            //Íæ¼ÒÊÜÉËÂß¼­
-            Debug.Log($"Íæ¼Ò{playerID}ÊÜµ½ÁË{atkData.dmg}µãÉËº¦£¬ÉËº¦À´Ô´Îª{atkData.dmgSource}");
-            ES3.DeleteDirectory("");
+            if (playerID == 1)
+            {
+                Messenger.Broadcast(MsgType.Player1Hurt);
+            }
+            else if (playerID == 2)
+            {
+                Messenger.Broadcast(MsgType.Player2Hurt);
+            }
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
+            Debug.Log($"ï¿½ï¿½ï¿½{playerID}ï¿½Üµï¿½ï¿½ï¿½{atkData.dmg}ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½Ô´Îª{atkData.dmgSource}");
         }
     }
 }
