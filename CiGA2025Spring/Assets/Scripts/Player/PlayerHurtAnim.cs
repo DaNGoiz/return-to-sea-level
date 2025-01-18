@@ -28,6 +28,8 @@ public class PlayerHurtAnim : MonoBehaviour
     public void ResetPlayer()
     {
         transform.localPosition = new Vector3(0, 0, 0);
+        Animator playerAnim = GetComponent<Animator>();
+        playerAnim.enabled = true;
     }
 
     public void PlayerHurt()
@@ -38,18 +40,17 @@ public class PlayerHurtAnim : MonoBehaviour
 
     private void PlayerGameOver()
     {
-        // Animator playerAnim = GetComponent<Animator>();
-        // playerAnim.enabled = false;
+        Animator playerAnim = GetComponent<Animator>();
+        playerAnim.enabled = false;
 
-        // if (playerNum == 1)
-        // {
-        //     playerSprite.sprite = Resources.Load<Sprite>("Textures/Player/Caco_dead");
-            
-        // }
-        // else if (playerNum == 2)
-        // {
-        //     playerSprite.sprite = Resources.Load<Sprite>("Textures/Player/Wepsi_dead");
-        // }
+        if (playerNum == 1)
+        {
+            playerSprite.sprite = Resources.Load<Sprite>("Textures/Player/Caco_dead");
+        }
+        else if (playerNum == 2)
+        {
+            playerSprite.sprite = Resources.Load<Sprite>("Textures/Player/Wepsi_dead");
+        }
         StartCoroutine(DeadCoroutine());
     }
 

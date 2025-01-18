@@ -27,7 +27,6 @@ public class PlayerMove : MonoBehaviour
         
         Messenger.AddListener(MsgType.ResetPlayer, ResetPlayer);
         
-        Debug.Log(playerNum);
         if (playerNum == 1) 
         {
             playerOriginalPosition = new Vector3(-2.5f, 0, 0);
@@ -112,6 +111,7 @@ public class PlayerMove : MonoBehaviour
         isDashing = true;
         dashTime = dashDuration;
         // Messenger.Broadcast<bool>(MsgType.Player1Dash, isDashing);
+        // 生成气泡&路径
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
