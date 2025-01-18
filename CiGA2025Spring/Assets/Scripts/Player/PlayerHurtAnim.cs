@@ -11,15 +11,16 @@ public class PlayerHurtAnim : MonoBehaviour
     void Start()
     {
         playerSprite = GetComponent<SpriteRenderer>();
-        Messenger.AddListener(MsgType.Player1Hurt, PlayerHurt);
-
+        
         if (playerNum == 1) 
         {
             Messenger.AddListener(MsgType.Player1IsDying, PlayerGameOver);
+            Messenger.AddListener(MsgType.Player1Hurt, PlayerHurt);
         }
         else if (playerNum == 2)
         {
             Messenger.AddListener(MsgType.Player2IsDying, PlayerGameOver);
+            Messenger.AddListener(MsgType.Player2Hurt, PlayerHurt);
         }
 
         Messenger.AddListener(MsgType.ResetPlayer, ResetPlayer);

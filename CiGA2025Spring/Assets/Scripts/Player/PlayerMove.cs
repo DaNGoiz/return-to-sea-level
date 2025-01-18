@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
 
     private float dashTime = 0f;
     private bool isDashing = false;
-    private bool canMove = true; // 目前只在死亡的时候为false
+    private bool canMove = true;
     private Vector2 dashDirection;
 
     private Rigidbody2D rb;
@@ -24,10 +24,10 @@ public class PlayerMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteTransform = transform.Find("Sprite");
-        
+
         Messenger.AddListener(MsgType.ResetPlayer, ResetPlayer);
-        
-        if (playerNum == 1) 
+
+        if (playerNum == 1)
         {
             playerOriginalPosition = new Vector3(-2.5f, 0, 0);
             Messenger.AddListener(MsgType.Player1IsDying, PlayerGameOver);
@@ -59,14 +59,17 @@ public class PlayerMove : MonoBehaviour
         if (canMove)
         {
             HandleMovement();
-            HandleDash();;
+            HandleDash();
         }
     }
 
     void HandleMovement()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        string horizontalInput = playerNum == 1 ? "Horizontal" : "Horizontal2";
+        string verticalInput = playerNum == 1 ? "Vertical" : "Vertical2";
+
+        float horizontal = Input.GetAxisRaw(horizontalInput);
+        float vertical = Input.GetAxisRaw(verticalInput);
 
         Vector2 moveDirection = new Vector2(horizontal, vertical).normalized;
 
@@ -95,7 +98,11 @@ public class PlayerMove : MonoBehaviour
 
     void HandleDash()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0f)
+        if (playerNum == 1 && Input.GetKeyDown(KeyCode.Space) && dashTime <= 0f)
+        {
+            StartDash();
+        }
+        else if (playerNum == 2 && Input.GetKeyDown(KeyCode.Return) && dashTime <= 0f)
         {
             StartDash();
         }
@@ -110,11 +117,12 @@ public class PlayerMove : MonoBehaviour
     {
         isDashing = true;
         dashTime = dashDuration;
-        // Messenger.Broadcast<bool>(MsgType.Player1Dash, isDashing);
-        // 生成气泡&路径
 
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        string horizontalInput = playerNum == 1 ? "Horizontal" : "Horizontal2";
+        string verticalInput = playerNum == 1 ? "Vertical" : "Vertical2";
+
+        float horizontal = Input.GetAxisRaw(horizontalInput);
+        float vertical = Input.GetAxisRaw(verticalInput);
         dashDirection = new Vector2(horizontal, vertical).normalized;
 
         if (dashDirection == Vector2.zero)
@@ -136,7 +144,6 @@ public class PlayerMove : MonoBehaviour
     {
         isDashing = false;
         dashTime = dashCooldown;
-        // Messenger.Broadcast<bool>(MsgType.Player1Dash, isDashing);
     }
 
     public Vector2 GetMoveDirection()
