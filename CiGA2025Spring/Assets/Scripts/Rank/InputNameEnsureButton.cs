@@ -30,18 +30,7 @@ public class InputNameEnsureButton : MonoBehaviour
 
             List<(string name1, string name2, float distance)> records = LoadAllRecord();
 
-            Debug.Log("All files:");
-            foreach (var file in ES3.GetFiles())
-            {
-                Debug.Log(file);
-            }
-
             records.Sort((a, b) => b.distance.CompareTo(a.distance));
-
-            for (int i = 0; i < records.Count; i++)
-            {
-                Debug.Log(records[i].name1 + " " + records[i].name2 + " " + records[i].distance);
-            }
 
             for (int i = 0; i < records.Count; i++)
             {
