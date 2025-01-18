@@ -10,4 +10,7 @@ public static class MsgType
     public static string Player1Dash = nameof(Player1Dash);
     public static string Player2Hurt = nameof(Player2Hurt);
     public static string Player2Dash = nameof(Player2Dash);
+
+    public static string ChangeBubbleBar = nameof(ChangeBubbleBar);
+    public static string ResetPlayer = nameof(ResetPlayer);
 }

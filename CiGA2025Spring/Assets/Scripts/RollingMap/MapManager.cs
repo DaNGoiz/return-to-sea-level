@@ -47,6 +47,7 @@ public class MapManager : MonoBehaviour
         {
             group.Reset();
         }
+        Messenger.Broadcast(MsgType.ResetPlayer);
     }
     class MapGroup
     {

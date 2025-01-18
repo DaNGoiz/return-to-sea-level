@@ -12,7 +12,6 @@ public class PlayerHurt : MonoBehaviour
 
     private void PlayerIsHurt()
     {
-        IPlayerDamagable player = GetComponent<IPlayerDamagable>();
-        player.CanHurt = false;
+
     }
 }

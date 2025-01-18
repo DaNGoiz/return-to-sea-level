@@ -131,7 +131,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00379771, y: 0.13292411}
+  m_Offset: {x: -0.06287986, y: 0.21230245}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -142,7 +142,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.869999, y: 0.797481}
+  m_Size: {x: 2.7366438, y: 0.58792233}
   m_EdgeRadius: 0
 --- !u!1 &2110002664919376455
 GameObject:
@@ -153,8 +153,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3056679341465943564}
-  - component: {fileID: 9133108921238316948}
   - component: {fileID: 86555335666137833}
+  - component: {fileID: 6797935732212775579}
   m_Layer: 0
   m_Name: hitbox
   m_TagString: Untagged
@@ -177,8 +177,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2230867533009891479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &9133108921238316948
-BoxCollider2D:
+--- !u!114 &86555335666137833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110002664919376455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ded156ca05dab4dbd1e94f85faed35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmg: 5
+--- !u!60 &6797935732212775579
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -209,7 +222,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17371118, y: -0.5851331}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -219,19 +232,9 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.2982633, y: 1.097522}
-  m_EdgeRadius: 0
---- !u!114 &86555335666137833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110002664919376455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2ded156ca05dab4dbd1e94f85faed35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmg: 5
+  m_Points:
+    m_Paths:
+    - - {x: 1.3280699, y: 0.14113984}
+      - {x: -1.1796656, y: -0.14820157}
+      - {x: -0.0924651, y: -1.2535355}
+  m_UseDelaunayMesh: 0
