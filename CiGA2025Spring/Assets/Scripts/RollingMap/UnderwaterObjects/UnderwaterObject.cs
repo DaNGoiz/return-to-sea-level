@@ -8,11 +8,11 @@ public abstract class UnderwaterObject : MonoBehaviour
     {
         Messenger.RemoveListener(MsgType.ResetMap, DestroySelf);
     }
-    private void Awake()
+    protected void Awake()
     {
         Messenger.AddListener(MsgType.ResetMap, DestroySelf);
     }
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (MapManager.Roll)
         {
@@ -23,7 +23,7 @@ public abstract class UnderwaterObject : MonoBehaviour
             }
         }
     }
-    private void DestroySelf()
+    protected void DestroySelf()
     {
         OnSelfDestroyed();
         Destroy(gameObject);
