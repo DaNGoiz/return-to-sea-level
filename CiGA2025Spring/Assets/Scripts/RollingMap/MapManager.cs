@@ -79,7 +79,7 @@ public class MapManager : MonoBehaviour
             if (rollingDistance > 16)
             {
                 rollingDistance -= 16;
-                InstNewMap(new Vector3(0, 32 - rollingDistance));
+                InstNewMap(new Vector3(0, 32 - rollingDistance, rollingSpeedCorrection * 10));
                 Destroy(mapImgs.Dequeue());
             }
         }
@@ -94,9 +94,9 @@ public class MapManager : MonoBehaviour
         public void Init()
         {
             //生成前3张地图
-            InstNewMap(Vector3.zero);
-            InstNewMap(new Vector3(0, 16));
-            InstNewMap(new Vector3(0, 32));
+            InstNewMap(new Vector3(0, 0, rollingSpeedCorrection * 10));
+            InstNewMap(new Vector3(0, 16, rollingSpeedCorrection * 10));
+            InstNewMap(new Vector3(0, 32, rollingSpeedCorrection * 10));
         }
         public void Reset()
         {
@@ -104,7 +104,7 @@ public class MapManager : MonoBehaviour
             rollingDistance = 0;
             foreach(GameObject go in mapImgs)
             {
-                go.transform.position = new Vector3(0, 16 * c);
+                go.transform.position = new Vector3(0, 16 * c, rollingSpeedCorrection * 10);
                 c++;
             }
         }
