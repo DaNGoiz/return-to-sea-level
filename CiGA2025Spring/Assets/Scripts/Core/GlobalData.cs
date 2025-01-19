@@ -8,4 +8,6 @@ public static class GlobalData
     public const float DefaultObjGenInterval = 6f;//Ĭ�ϸ�6m����һ������
 
     public const float PlayerInvincibleTime = 1f;
+
+    public const float DashBubbleConsumption = 15f;
 }

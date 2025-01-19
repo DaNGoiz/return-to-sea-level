@@ -100,10 +100,12 @@ public class PlayerMove : MonoBehaviour
     {
         if (playerNum == 1 && Input.GetKeyDown(KeyCode.Space) && dashTime <= 0f)
         {
+            Messenger.Broadcast(MsgType.ChangeBubbleBar, 1, -GlobalData.DashBubbleConsumption);
             StartDash();
         }
         else if (playerNum == 2 && Input.GetKeyDown(KeyCode.Return) && dashTime <= 0f)
         {
+            Messenger.Broadcast(MsgType.ChangeBubbleBar, 2, -GlobalData.DashBubbleConsumption);
             StartDash();
         }
 

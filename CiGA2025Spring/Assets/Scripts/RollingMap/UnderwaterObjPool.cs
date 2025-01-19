@@ -6,11 +6,13 @@ using UnityEngine;
 public class UnderwaterObjPool : ScriptableObject
 {
     [SerializeField]
-    public List<ObjPreset> objPresets;
-    public static List<ObjPreset> ObjPresets;
+    public List<DifficultyPreset> presets;
+    public static List<DifficultyPreset> Presets;
     public static ObjPreset GetObj()
     {
-        int i = Random.Range(0, ObjPresets.Count);
-        return ObjPresets[i];
+        int diff = Mathf.Min(DifficultyManager.DiffFactor, Presets.Count - 1),
+            i = Random.Range(0, Presets[diff].objPresets.Count);
+        return Presets[diff].objPresets[i];
     }
 }
+

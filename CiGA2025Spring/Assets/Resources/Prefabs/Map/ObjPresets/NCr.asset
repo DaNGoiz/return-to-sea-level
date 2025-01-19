@@ -10,11 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd3e0bc375ebfe54cafddb451732849c, type: 3}
-  m_Name: Single_Sugar
+  m_Name: NCr
   m_EditorClassIdentifier: 
   datas:
   - randomPosition: 1
-    positionX: 0
-    randPosXMin: -8
-    randPosXMax: 8
-    obj: {fileID: 2741075193774899397, guid: 3f73cabc3eb7e7142824d085e1c5f3b5, type: 3}
+    position: {x: 0, y: 0}
+    randPosXMin: -1.5
+    randPosXMax: 1.5
+    randPosYMin: -0.3
+    randPosYMax: 0.3
+    randomScale: 1
+    randScaleMin: 0.8
+    randScaleMax: 1.1
+    randomOrientation: 1
+    obj: {fileID: 6052721743928474976, guid: 0ce37e00ac63bea4a93803997616f9e3, type: 3}

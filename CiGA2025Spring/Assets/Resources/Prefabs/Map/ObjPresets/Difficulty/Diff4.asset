@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd3e0bc375ebfe54cafddb451732849c, type: 3}
-  m_Name: Coral_0
+  m_Script: {fileID: 11500000, guid: ec43ca9ea4c25fe47945a939af607895, type: 3}
+  m_Name: Diff4
   m_EditorClassIdentifier: 
-  datas:
-  - randomPosition: 1
-    positionX: 0
-    randPosXMin: -7
-    randPosXMax: 7
-    obj: {fileID: 1554963028272011148, guid: 8650b54485d2bca42a472c725c7a88ff, type: 3}
+  objPresets: []

@@ -17,7 +17,7 @@ public abstract class UnderwaterObject : MonoBehaviour
         if (MapManager.Roll)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - GlobalData.MapRollingSpeed, transform.position.z);
-            if (transform.position.y < -8)
+            if (transform.position.y < -10)
             {
                 DestroySelf();
             }
