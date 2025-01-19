@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class SinglePlayerRankScroll : MonoBehaviour
 {
-    // 玩家鼠标滚动时上下移动UI
-    
-    // Start is called before the first frame update
+    public float scrollSpeed = 10000f;
+    public float upperLimit = 0f;
+    public float lowerLimit = -10000f;
+    public float initialPositionY = 0f;
+
+    private Vector3 initialPosition;
+
     void Start()
     {
-        
+        initialPosition = transform.localPosition;
+        Messenger.AddListener(MsgType.GameOver, ResetPosition);
     }
 
-    // Update is called once per frame
+    void ResetPosition()
+    {
+        transform.localPosition = initialPosition;
+    }
+
     void Update()
     {
-        
+        float scroll = Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
+        Vector3 newPosition = transform.localPosition + new Vector3(0, scroll, 0);
+
+        newPosition.y = Mathf.Clamp(newPosition.y, initialPosition.y + lowerLimit, initialPosition.y + upperLimit);
+
+        transform.localPosition = newPosition;
     }
 }
