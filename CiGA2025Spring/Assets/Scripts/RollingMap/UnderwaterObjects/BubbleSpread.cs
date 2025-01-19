@@ -13,9 +13,10 @@ public class BubbleSpread : MonoBehaviour
     private IEnumerator Spread()
     {
         Vector3 dir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-        Vector3 start = transform.position,
-            end = transform.position + dir * Random.Range(0f, 2f);
-        while ((transform.position - end).x > 0.001f)
+        Vector3 end = transform.position + dir * Random.Range(1f, 2f);
+        float endTime = Time.time + 0.5f;
+        Debug.Log(end);
+        while ((transform.position - end).sqrMagnitude > 0.001f && Time.time < endTime)
         {
             transform.position += 0.05f * (end - transform.position);
             yield return null;
