@@ -182,5 +182,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b696ce7c361d1154e886bd8a71caa840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumn: 5
+  volumn: 10
   destroySelfAfterInflating: 1

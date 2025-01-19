@@ -8,6 +8,6 @@ public class PufferAttacker : IAttacker
     private float dmg;
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        TryAttack(other, "Puffer", dmg);
+        TryAttack(other, "Puffer", dmg * Random.Range(0.5f, 1.5f));
     }
 }

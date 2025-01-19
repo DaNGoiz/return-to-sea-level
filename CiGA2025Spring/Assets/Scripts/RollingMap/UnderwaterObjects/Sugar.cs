@@ -8,7 +8,7 @@ public class Sugar : PickableObject
     {
         base.Pick(playerNum);
         BoomEffect.Set(transform.position, 1f * transform.localScale.x);
-        Messenger.Broadcast(MsgType.ChangeBubbleBar, playerNum, 20f);
+        Messenger.Broadcast(MsgType.ChangeBubbleBar, playerNum, 20f * transform.localScale.x);
         DestroySelf();
     }
 }

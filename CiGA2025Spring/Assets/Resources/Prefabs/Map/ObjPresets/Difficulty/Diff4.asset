@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec43ca9ea4c25fe47945a939af607895, type: 3}
   m_Name: Diff4
   m_EditorClassIdentifier: 
-  objPresets: []
+  objPresets:
+  - {fileID: 11400000, guid: ec2c127ec2cb9a347bbd8f069a603076, type: 2}
+  - {fileID: 11400000, guid: d2950947fc4a487418cd25e83ec41648, type: 2}
+  - {fileID: 11400000, guid: 962bb7d402a6ace4a946ad8a932300bb, type: 2}
+  - {fileID: 11400000, guid: f210d8f92196db540999a5b57c13adb6, type: 2}
+  - {fileID: 11400000, guid: aed2d969451fe9342a983304152a9c3a, type: 2}
+  - {fileID: 11400000, guid: c16a7519f2a810544b084334b0c677da, type: 2}
+  - {fileID: 11400000, guid: 58705b17d2932474f9fd63f34caae43b, type: 2}
+  - {fileID: 11400000, guid: 9a0c1b6fea8b2284d83638281221b448, type: 2}
