@@ -33,11 +33,13 @@ public class InputNameEnsureButton : MonoBehaviour
             // Find the rank for the current entry
             for (int i = 0; i < records.Count; i++)
             {
-                if (records[i].name1 == name1 && records[i].name2 == name2 && records[i].distance == GlobalData.Distance)
+                float tolerance = 0.01f;
+                if (Mathf.Abs(records[i].distance - GlobalData.Distance) < tolerance)
                 {
                     int rank = i + 1;
-                    Debug.Log("排名为：" + rank);
+                    PlayerPrefs.SetInt("CurrentRank", rank);
                 }
+                Debug.Log($"{records[i].name1} + {records[i].name2} : {records[i].distance}");
             }
 
             // Instantiate and display the rank UI
