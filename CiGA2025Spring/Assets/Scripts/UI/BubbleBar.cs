@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +6,11 @@ public class BubbleBar : MonoBehaviour
 {
     [SerializeField]
     public int playerNum;
-    private float bubbleValue; // 泡泡的值
+    private float bubbleValue;
+    private float naturalDecreaseValue = 0.5f;
     private Slider slider;
     private Coroutine changeValueCoroutine;
+    private bool canChangeValue = true;
 
     void Start()
     {
@@ -17,6 +18,17 @@ public class BubbleBar : MonoBehaviour
         bubbleValue = slider.value;
         Messenger.AddListener<int, float>(MsgType.ChangeBubbleBar, ChangeValue);
         Messenger.AddListener(MsgType.ResetPlayer, ResetValue);
+        Messenger.AddListener(MsgType.GameStart, GameStart);
+    }
+
+    void Update()
+    {
+        if (bubbleValue > slider.minValue && canChangeValue)
+        {
+            bubbleValue -= naturalDecreaseValue * Time.deltaTime;
+            bubbleValue = Mathf.Clamp(bubbleValue, slider.minValue, slider.maxValue);
+            slider.value = bubbleValue;
+        }
     }
 
     private void ResetValue()
@@ -25,12 +37,18 @@ public class BubbleBar : MonoBehaviour
         slider.value = bubbleValue;
     }
 
+    private void GameStart()
+    {
+        canChangeValue = true;
+    }
+
     public void ChangeValue(int playerNum, float value)
     {
-        if (this.playerNum != playerNum)
+        if (this.playerNum != playerNum || canChangeValue == false)
         {
             return;
         }
+
         bubbleValue += value;
         bubbleValue = Mathf.Clamp(bubbleValue, slider.minValue, slider.maxValue);
 
@@ -38,10 +56,12 @@ public class BubbleBar : MonoBehaviour
         {
             StopCoroutine(changeValueCoroutine);
         }
+
         changeValueCoroutine = StartCoroutine(SmoothChangeValue(bubbleValue));
 
         if (bubbleValue == 0)
         {
+            canChangeValue = false;
             if (playerNum == 1)
             {
                 Messenger.Broadcast(MsgType.Player1IsDying);

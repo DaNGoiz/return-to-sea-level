@@ -16,4 +16,5 @@ public static class MsgType
     public static string ChangeBubbleBar = nameof(ChangeBubbleBar);
     public static string ResetPlayer = nameof(ResetPlayer);
     public static string ResetMap = nameof(ResetMap);
+    // public static string GetSceneByName
 }

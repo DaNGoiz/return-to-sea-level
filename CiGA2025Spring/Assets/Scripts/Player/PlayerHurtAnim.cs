@@ -36,7 +36,6 @@ public class PlayerHurtAnim : MonoBehaviour
     public void PlayerHurt()
     {
         StartCoroutine(HurtCoroutine());
-        // 播放漏气动画
     }
 
     private void PlayerGameOver()
@@ -64,7 +63,7 @@ public class PlayerHurtAnim : MonoBehaviour
         Messenger.Broadcast(MsgType.GameOver);
     }
 
-    IEnumerator HurtCoroutine() // dotween
+    IEnumerator HurtCoroutine()
     {
         playerSprite.color = Color.red;
         yield return new WaitForSeconds(0.1f);
