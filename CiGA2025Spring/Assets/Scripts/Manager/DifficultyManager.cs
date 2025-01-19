@@ -8,15 +8,15 @@ public class DifficultyManager : MonoBehaviour
     {
         get
         {
-            if (GlobalData.Distance < 80f)
+            if (GlobalData.Distance < 50f)
                 return 0;
-            else if (GlobalData.Distance < 180f)
+            else if (GlobalData.Distance < 130f)
                 return 1;
-            else if (GlobalData.Distance < 300f)
+            else if (GlobalData.Distance < 240f)
                 return 2;
-            else if (GlobalData.Distance < 500f)
+            else if (GlobalData.Distance < 320f)
                 return 3;
-            else if (GlobalData.Distance < 750f)
+            else if (GlobalData.Distance < 450f)
                 return 4;
             else
                 return 5;

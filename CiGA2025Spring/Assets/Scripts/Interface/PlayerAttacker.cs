@@ -8,6 +8,6 @@ public class PlayerAttacker : IAttacker
     private float dmg;
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        TryAttack(other, "Player", dmg);
+        TryAttack(other, "Player", dmg * Random.Range(1f, 10f));
     }
 }
