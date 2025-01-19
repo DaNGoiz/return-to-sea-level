@@ -13,8 +13,16 @@ public class ObjPreset : ScriptableObject
 public class ObjData
 {
     public bool randomPosition;
-    public float positionX;
+    public Vector2 position;
     public float randPosXMin;
     public float randPosXMax;
+    public float randPosYMin;
+    public float randPosYMax;
+
+    public bool randomScale;
+    public float randScaleMin;
+    public float randScaleMax;
+
+    public bool randomOrientation;
     public GameObject obj;
 }

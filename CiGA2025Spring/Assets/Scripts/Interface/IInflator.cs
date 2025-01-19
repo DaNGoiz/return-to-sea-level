@@ -12,7 +12,7 @@ public class IInflator : MonoBehaviour
     {
         if (collision.TryGetComponent(out IInflatable other))
         {
-            other.Inflate(volumn);
+            other.Inflate(volumn * Mathf.Abs(transform.localScale.x));
             if (destroySelfAfterInflating)
             {
                 DestroySelf();

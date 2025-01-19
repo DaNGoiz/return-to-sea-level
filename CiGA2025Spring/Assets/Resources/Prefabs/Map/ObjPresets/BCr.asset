@@ -10,11 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd3e0bc375ebfe54cafddb451732849c, type: 3}
-  m_Name: Coral_0
+  m_Name: BCr
   m_EditorClassIdentifier: 
   datas:
   - randomPosition: 1
-    positionX: 0
-    randPosXMin: -7
-    randPosXMax: 7
-    obj: {fileID: 1554963028272011148, guid: 8650b54485d2bca42a472c725c7a88ff, type: 3}
+    position: {x: 0, y: 0}
+    randPosXMin: -8
+    randPosXMax: 8
+    randPosYMin: -0.5
+    randPosYMax: 0.5
+    randomScale: 1
+    randScaleMin: 0.6
+    randScaleMax: 1.2
+    randomOrientation: 1
+    obj: {fileID: 1554963028272011148, guid: 5113ed6dd8e6b5a4f884a547c388a52d, type: 3}

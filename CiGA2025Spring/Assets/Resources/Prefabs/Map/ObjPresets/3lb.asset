@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3e0bc375ebfe54cafddb451732849c, type: 3}
+  m_Name: 3lb
+  m_EditorClassIdentifier: 
+  datas:
+  - randomPosition: 1
+    position: {x: 0, y: 0}
+    randPosXMin: -8
+    randPosXMax: 8
+    randPosYMin: -0.7
+    randPosYMax: 0.7
+    randomScale: 1
+    randScaleMin: 0.5
+    randScaleMax: 1.2
+    randomOrientation: 1
+    obj: {fileID: 8614211001794375962, guid: d9bf1899069f9084d8c24c7ed367ac09, type: 3}
+  - randomPosition: 1
+    position: {x: 0, y: 0}
+    randPosXMin: -8
+    randPosXMax: 8
+    randPosYMin: -0.7
+    randPosYMax: 0.7
+    randomScale: 1
+    randScaleMin: 0.5
+    randScaleMax: 1.2
+    randomOrientation: 1
+    obj: {fileID: 8614211001794375962, guid: d9bf1899069f9084d8c24c7ed367ac09, type: 3}
+  - randomPosition: 1
+    position: {x: 0, y: 0}
+    randPosXMin: -8
+    randPosXMax: 8
+    randPosYMin: -0.7
+    randPosYMax: 0.7
+    randomScale: 1
+    randScaleMin: 0.5
+    randScaleMax: 1.2
+    randomOrientation: 1
+    obj: {fileID: 8614211001794375962, guid: d9bf1899069f9084d8c24c7ed367ac09, type: 3}

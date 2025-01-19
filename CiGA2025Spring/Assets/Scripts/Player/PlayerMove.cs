@@ -1,7 +1,9 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerMove : MonoBehaviour
 {
+    public static float infBubble = 1;
     [SerializeField]
     public float moveSpeed = 5f;
     public float dashSpeed = 10f;
@@ -19,13 +21,23 @@ public class PlayerMove : MonoBehaviour
     private Transform spriteTransform;
 
     private Vector3 playerOriginalPosition;
+    private Collider2D playerBottleCollider; // 不是它自己的，而是子物体BottleHitCollider的碰撞体
+    private AudioSource audioSource;
+    private GameObject hollyLight;
+    
 
     void Start()
     {
+        hollyLight = transform.Find("HollyLight").gameObject;
+        hollyLight.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         spriteTransform = transform.Find("Sprite");
+        playerBottleCollider = FindChildByName(transform, "BottleHitCollider").GetComponent<Collider2D>();
+        playerBottleCollider.enabled = false;
 
         Messenger.AddListener(MsgType.ResetPlayer, ResetPlayer);
+        Messenger.AddListener<int, float>(MsgType.InfBubble, PlayerSuperPower);
 
         if (playerNum == 1)
         {
@@ -39,6 +51,40 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    private Transform FindChildByName(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+            {
+                return child;
+            }
+            Transform result = FindChildByName(child, name);
+            if (result != null)
+            {
+                return result;
+            }
+        }
+        return null;
+    }
+
+    public void PlayerSuperPower(int playerNum, float duration)
+    {
+        if (this.playerNum != playerNum)
+        {
+            return;
+        }
+        StartCoroutine(SuperPowerCoroutine(duration));
+    }
+
+    IEnumerator SuperPowerCoroutine(float duration)
+    {
+        hollyLight.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.7f);
+        GetComponent<IPlayerDamagable>().CanHurt = false;
+        yield return new WaitForSeconds(duration);
+        hollyLight.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        GetComponent<IPlayerDamagable>().CanHurt = true;
+    }
     private void PlayerGameOver()
     {
         canMove = false;
@@ -117,6 +163,8 @@ public class PlayerMove : MonoBehaviour
     {
         isDashing = true;
         dashTime = dashDuration;
+        playerBottleCollider.enabled = true;
+        audioSource.Play();
 
         string horizontalInput = playerNum == 1 ? "Horizontal" : "Horizontal2";
         string verticalInput = playerNum == 1 ? "Vertical" : "Vertical2";
@@ -131,8 +179,12 @@ public class PlayerMove : MonoBehaviour
 
             GameObject bubblePrefab = Resources.Load<GameObject>("Prefabs/Map/LittleBubble");
             GameObject bubbleInstance = Instantiate(bubblePrefab, transform.position, Quaternion.identity);
+
+            float bubbleScale = Random.Range(0.5f, 1.2f);
             bubbleInstance.AddComponent<PlayerBubbleTrail>();
+            bubbleInstance.transform.localScale = new Vector3(bubbleScale, bubbleScale, 1);
             bubbleInstance.GetComponent<PlayerBubbleTrail>().SetDirection(Vector2.down);
+            Messenger.Broadcast(MsgType.ChangeBubbleBar, playerNum, -GlobalData.DashBubbleConsumption * bubbleScale * infBubble);
         }
 
         if (dashDirection != Vector2.zero)
@@ -144,8 +196,12 @@ public class PlayerMove : MonoBehaviour
             GameObject bubblePrefab = Resources.Load<GameObject>("Prefabs/Map/LittleBubble");
             GameObject bubbleInstance = Instantiate(bubblePrefab, transform.position, Quaternion.identity);
             Vector2 bubbleDirection = -dashDirection;
+            
+            float bubbleScale = Random.Range(0.5f, 1.2f);
             bubbleInstance.AddComponent<PlayerBubbleTrail>();
+            bubbleInstance.transform.localScale = new Vector3(bubbleScale, bubbleScale, 1);
             bubbleInstance.GetComponent<PlayerBubbleTrail>().SetDirection(bubbleDirection);
+            Messenger.Broadcast(MsgType.ChangeBubbleBar, playerNum, -GlobalData.DashBubbleConsumption * bubbleScale * infBubble);
         }
 
         Invoke("EndDash", dashDuration);
@@ -155,6 +211,7 @@ public class PlayerMove : MonoBehaviour
     {
         isDashing = false;
         dashTime = dashCooldown;
+        playerBottleCollider.enabled = false;
     }
 
     public Vector2 GetMoveDirection()

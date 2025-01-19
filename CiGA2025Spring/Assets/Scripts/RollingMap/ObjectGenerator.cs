@@ -24,6 +24,7 @@ public class ObjectGenerator : MonoBehaviour
                 //触发生成物体的逻辑
                 Generate();
                 lastGenDistance = GlobalData.Distance;
+                GenInterval = GlobalData.DefaultObjGenInterval - 3f * ( DifficultyManager.DiffFactor / 5) * Random.Range(0.8f, 1.2f);
             }
         }
     }
@@ -34,7 +35,8 @@ public class ObjectGenerator : MonoBehaviour
         GenInterval = GlobalData.DefaultObjGenInterval;
         ObjParent = new("UnderwaterObjects");
         ObjParent.transform.position = new Vector3(0, 7, 0);
-        UnderwaterObjPool.ObjPresets = Resources.Load<UnderwaterObjPool>("Prefabs/Map/ObjPresets/UnderwaterObjPool").objPresets;
+        UnderwaterObjPool.Presets = Resources.Load<UnderwaterObjPool>("Prefabs/Map/ObjPresets/Difficulty/UnderwaterObjPool").presets;
+        Debug.Log("");
     }
     public void ResetGenerator()
     {
@@ -44,7 +46,6 @@ public class ObjectGenerator : MonoBehaviour
     }
     public void Generate()
     {
-        //根据难度和最近生成的数个物品（避免连续的奖励或障碍）在物品池中抽取物品
         ObjPreset objPreset = UnderwaterObjPool.GetObj();
         //将物品生成到场景中，并将生成好的物体设置为ObjParent的子物体
         GameObject objCache;
@@ -55,11 +56,21 @@ public class ObjectGenerator : MonoBehaviour
             if (data.randomPosition)
             {
                 objCache.transform.localPosition= new Vector3(
-                    Random.Range(data.randPosXMin, data.randPosXMax), 0, 0);
+                    Random.Range(data.randPosXMin, data.randPosXMax),
+                    Random.Range(data.randPosYMin * 2.5f, data.randPosYMax * 2.5f), 0);
             }
             else
             {
-                objCache.transform.localPosition = new Vector3(data.positionX, 0, 0);
+                objCache.transform.localPosition = data.position;
+            }
+            if (data.randomScale)
+            {
+                float scale = Random.Range(data.randScaleMin, data.randScaleMax);
+                objCache.transform.localScale = new Vector3(scale, scale, 1);
+            }
+            if (data.randomOrientation && Random.Range(0, 2) == 0)
+            {
+                objCache.transform.localScale = new Vector3(-objCache.transform.localScale.x, objCache.transform.localScale.y, 1);
             }
         }
     }
