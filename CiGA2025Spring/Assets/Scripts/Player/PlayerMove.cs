@@ -19,11 +19,14 @@ public class PlayerMove : MonoBehaviour
     private Transform spriteTransform;
 
     private Vector3 playerOriginalPosition;
+    private Collider2D playerBottleCollider; // 不是它自己的，而是子物体BottleHitCollider的碰撞体
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteTransform = transform.Find("Sprite");
+        playerBottleCollider = FindChildByName(transform, "BottleHitCollider").GetComponent<Collider2D>();
+        playerBottleCollider.enabled = false;
 
         Messenger.AddListener(MsgType.ResetPlayer, ResetPlayer);
 
@@ -37,6 +40,23 @@ public class PlayerMove : MonoBehaviour
             playerOriginalPosition = new Vector3(2.5f, 0, 0);
             Messenger.AddListener(MsgType.Player2IsDying, PlayerGameOver);
         }
+    }
+
+    private Transform FindChildByName(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+            {
+                return child;
+            }
+            Transform result = FindChildByName(child, name);
+            if (result != null)
+            {
+                return result;
+            }
+        }
+        return null;
     }
 
     private void PlayerGameOver()
@@ -119,6 +139,7 @@ public class PlayerMove : MonoBehaviour
     {
         isDashing = true;
         dashTime = dashDuration;
+        playerBottleCollider.enabled = true;
 
         string horizontalInput = playerNum == 1 ? "Horizontal" : "Horizontal2";
         string verticalInput = playerNum == 1 ? "Vertical" : "Vertical2";
@@ -157,6 +178,7 @@ public class PlayerMove : MonoBehaviour
     {
         isDashing = false;
         dashTime = dashCooldown;
+        playerBottleCollider.enabled = false;
     }
 
     public Vector2 GetMoveDirection()
