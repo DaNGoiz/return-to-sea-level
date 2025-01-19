@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5115149910008010241}
   - component: {fileID: 1878742291638491398}
   - component: {fileID: 5020147609754707169}
-  - component: {fileID: 7467827679500060090}
   - component: {fileID: 2462460093332183755}
+  - component: {fileID: 2849131884841402491}
   m_Layer: 9
   m_Name: SuperSugar
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2741075193774899397}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.117477104, y: 0.68050826, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 1609639563
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1570847596, guid: 85b8375d94396c5469cedbe9e7d6f339, type: 3}
+  m_Sprite: {fileID: -1641321064, guid: f64e832765163be4cbd4d9038fd555be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,27 +122,6 @@ CircleCollider2D:
   m_Offset: {x: -0.100792766, y: -0.6719515}
   serializedVersion: 2
   m_Radius: 0.43021888
---- !u!95 &7467827679500060090
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2741075193774899397}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ccf38a7dafce75043b4902c766657067, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2462460093332183755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,3 +134,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34301016a27fbd044af0f3f617caa42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2849131884841402491
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2741075193774899397}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d3328dbe897809441abbe211753bc83d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
