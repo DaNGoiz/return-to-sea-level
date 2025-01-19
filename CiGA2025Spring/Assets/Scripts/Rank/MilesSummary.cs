@@ -8,6 +8,6 @@ public class MilesSummary : MonoBehaviour
     void Start()
     {
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-        text.text = $"上升了{GlobalData.Distance:N2}m";
+        text.text = $"上升了<wave>{GlobalData.Distance:N2}</wave>m";
     }
 }

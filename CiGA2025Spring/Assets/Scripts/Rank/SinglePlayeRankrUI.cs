@@ -33,13 +33,13 @@ public class SinglePlayeRankrUI : MonoBehaviour
 
     private void SetScore(int score)
     {
-        scoreText.text = score.ToString() + "m";
+        scoreText.text = "<wave>" + score.ToString() + "m";
     }
 
     private void SetName(string name1, string name2)
     {
-        nameText1.text = name1;
-        nameText2.text = name2;
+        nameText1.text = "<wave>" + name1;
+        nameText2.text = "<wave>" + name2;
     }
     
 }
