@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class PlayerMove : MonoBehaviour
         playerBottleCollider.enabled = false;
 
         Messenger.AddListener(MsgType.ResetPlayer, ResetPlayer);
+        Messenger.AddListener<int, float>(MsgType.InfBubble, PlayerSuperPower);
 
         if (playerNum == 1)
         {
@@ -64,6 +66,21 @@ public class PlayerMove : MonoBehaviour
         return null;
     }
 
+    public void PlayerSuperPower(int playerNum, float duration)
+    {
+        if (this.playerNum != playerNum)
+        {
+            return;
+        }
+        StartCoroutine(SuperPowerCoroutine(duration));
+    }
+
+    IEnumerator SuperPowerCoroutine(float duration)
+    {
+        GetComponent<IPlayerDamagable>().CanHurt = false;
+        yield return new WaitForSeconds(duration);
+        GetComponent<IPlayerDamagable>().CanHurt = true;
+    }
     private void PlayerGameOver()
     {
         canMove = false;

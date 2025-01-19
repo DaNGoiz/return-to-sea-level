@@ -46,6 +46,7 @@ public class PlayerHurtAnim : MonoBehaviour
 
     IEnumerator SuperPowerCoroutine(float duration)
     {
+        // 加一个无敌贴图
         PlayerMove.infBubble = 0;
 
         Sequence flashSequence = DOTween.Sequence();
