@@ -57,7 +57,7 @@ public class ObjectGenerator : MonoBehaviour
             {
                 objCache.transform.localPosition= new Vector3(
                     Random.Range(data.randPosXMin, data.randPosXMax),
-                    Random.Range(data.randPosYMin, data.randPosYMax), 0);
+                    Random.Range(data.randPosYMin * 2.5f, data.randPosYMax * 2.5f), 0);
             }
             else
             {
