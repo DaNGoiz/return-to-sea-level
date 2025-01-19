@@ -11,6 +11,8 @@ public class PlayerHurtAnim : MonoBehaviour
     void Start()
     {
         playerSprite = GetComponent<SpriteRenderer>();
+
+        Messenger.AddListener<int, float>(MsgType.InfBubble, PlayerSuperPower);
         
         if (playerNum == 1) 
         {
@@ -31,6 +33,32 @@ public class PlayerHurtAnim : MonoBehaviour
         transform.localPosition = new Vector3(0, 0, 0);
         Animator playerAnim = GetComponent<Animator>();
         playerAnim.enabled = true;
+    }
+
+    public void PlayerSuperPower(int playerNum, float duration)
+    {
+        if (this.playerNum != playerNum)
+        {
+            return;
+        }
+        StartCoroutine(SuperPowerCoroutine(duration));
+    }
+
+    IEnumerator SuperPowerCoroutine(float duration)
+    {
+        PlayerMove.infBubble = 0;
+
+        Sequence flashSequence = DOTween.Sequence();
+        float flashInterval = 0.1f;
+
+        flashSequence.Append(playerSprite.DOColor(Color.yellow, flashInterval))
+                    .Append(playerSprite.DOColor(Color.white, flashInterval))
+                    .SetLoops(Mathf.CeilToInt(duration / (flashInterval * 2)), LoopType.Yoyo);
+
+        yield return flashSequence.WaitForCompletion();
+
+        playerSprite.color = Color.white;
+        PlayerMove.infBubble = 1;
     }
 
     public void PlayerHurt()
