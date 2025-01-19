@@ -31,7 +31,7 @@ public class PlayerBubbleTrail : MonoBehaviour
     {
         Collider2D collider = GetComponent<Collider2D>();
         collider.enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.05f);
         collider.enabled = true;
     }
 }
