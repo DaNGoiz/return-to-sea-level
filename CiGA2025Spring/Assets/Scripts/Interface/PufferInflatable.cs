@@ -12,7 +12,7 @@ public class PufferInflatable : IInflatable
     }
     public void Explode()
     {
-        BoomEffect.Set(transform.position, 0.8f * transform.localScale.x);
+        BoomEffect.Set(transform.position, 0.8f * Mathf.Abs(transform.localScale.x));
         //·¢Éä1-4¸öÆøÅÝÇò
         int bubbleNum = Random.Range(1, 4);
         for (int i = 0; i < bubbleNum; i++)

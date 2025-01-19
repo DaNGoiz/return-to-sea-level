@@ -24,3 +24,36 @@ MonoBehaviour:
     randScaleMax: 1.2
     randomOrientation: 1
     obj: {fileID: 2741075193774899397, guid: a44a5536781c4644b8b1f7c1cd91d051, type: 3}
+  - randomPosition: 1
+    position: {x: 0, y: 0}
+    randPosXMin: -7
+    randPosXMax: 7
+    randPosYMin: -0.5
+    randPosYMax: 0.5
+    randomScale: 1
+    randScaleMin: 0.4
+    randScaleMax: 1.2
+    randomOrientation: 1
+    obj: {fileID: 437774261480989324, guid: 20511d1fcb935de46b81c3fcd4e4231e, type: 3}
+  - randomPosition: 1
+    position: {x: 0, y: 0}
+    randPosXMin: -7
+    randPosXMax: 7
+    randPosYMin: -0.5
+    randPosYMax: 0.5
+    randomScale: 1
+    randScaleMin: 0.4
+    randScaleMax: 1.2
+    randomOrientation: 1
+    obj: {fileID: 437774261480989324, guid: 20511d1fcb935de46b81c3fcd4e4231e, type: 3}
+  - randomPosition: 1
+    position: {x: 0, y: 0}
+    randPosXMin: -7
+    randPosXMax: 7
+    randPosYMin: -0.5
+    randPosYMax: 0.5
+    randomScale: 1
+    randScaleMin: 0.4
+    randScaleMax: 1.2
+    randomOrientation: 1
+    obj: {fileID: 437774261480989324, guid: 20511d1fcb935de46b81c3fcd4e4231e, type: 3}
