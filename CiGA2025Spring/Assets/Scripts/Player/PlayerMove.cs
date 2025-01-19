@@ -23,11 +23,13 @@ public class PlayerMove : MonoBehaviour
     private Vector3 playerOriginalPosition;
     private Collider2D playerBottleCollider; // 不是它自己的，而是子物体BottleHitCollider的碰撞体
     private AudioSource audioSource;
-
+    private GameObject hollyLight;
     
 
     void Start()
     {
+        hollyLight = transform.Find("HollyLight").gameObject;
+        hollyLight.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         spriteTransform = transform.Find("Sprite");
@@ -77,8 +79,10 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator SuperPowerCoroutine(float duration)
     {
+        hollyLight.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.7f);
         GetComponent<IPlayerDamagable>().CanHurt = false;
         yield return new WaitForSeconds(duration);
+        hollyLight.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
         GetComponent<IPlayerDamagable>().CanHurt = true;
     }
     private void PlayerGameOver()

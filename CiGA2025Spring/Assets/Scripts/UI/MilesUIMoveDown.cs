@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MilesUIMoveDown : MonoBehaviour
 {
+    Vector3 initialPosition;
     void Start()
     {
         Debug.Log(transform.localPosition);
@@ -19,7 +20,7 @@ public class MilesUIMoveDown : MonoBehaviour
 
     private void ResetPlayer()
     {
-        transform.position = new Vector3(640, 783, 0);
+        transform.position = initialPosition;
     }
 
     IEnumerator MoveDownCoroutine()
@@ -29,6 +30,6 @@ public class MilesUIMoveDown : MonoBehaviour
             transform.localPosition = new Vector3(0, transform.localPosition.y - 1, 0);
             yield return null;
         }
-        Debug.Log(transform.position);
+        initialPosition = transform.position;
     }
 }

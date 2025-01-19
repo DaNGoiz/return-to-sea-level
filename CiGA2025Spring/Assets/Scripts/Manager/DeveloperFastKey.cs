@@ -6,7 +6,7 @@ public class DeveloperFastKey : MonoBehaviour
 {
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Alpha1))
+        if(Input.GetKeyUp(KeyCode.BackQuote))
         {
             Messenger.Broadcast(MsgType.GameOver);
         }
