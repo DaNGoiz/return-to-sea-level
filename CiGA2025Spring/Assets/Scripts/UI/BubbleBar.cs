@@ -48,7 +48,7 @@ public class BubbleBar : MonoBehaviour
         {
             return;
         }
-
+        
         bubbleValue += value;
         bubbleValue = Mathf.Clamp(bubbleValue, slider.minValue, slider.maxValue);
 
@@ -58,7 +58,7 @@ public class BubbleBar : MonoBehaviour
         }
 
         changeValueCoroutine = StartCoroutine(SmoothChangeValue(bubbleValue));
-
+        
         if (bubbleValue == 0)
         {
             canChangeValue = false;
@@ -78,7 +78,12 @@ public class BubbleBar : MonoBehaviour
     {
         float startValue = slider.value;
         float elapsedTime = 0f;
-        float duration = 0.5f; // 滑动效果的持续时间
+        float duration = 0.5f;
+
+        if (Mathf.Approximately(startValue, targetValue))
+        {
+            yield break;
+        }
 
         while (elapsedTime < duration)
         {

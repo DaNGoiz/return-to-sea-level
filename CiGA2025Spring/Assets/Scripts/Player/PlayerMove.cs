@@ -120,12 +120,10 @@ public class PlayerMove : MonoBehaviour
     {
         if (playerNum == 1 && Input.GetKeyDown(KeyCode.Space) && dashTime <= 0f)
         {
-            Messenger.Broadcast(MsgType.ChangeBubbleBar, 1, -GlobalData.DashBubbleConsumption);
             StartDash();
         }
         else if (playerNum == 2 && Input.GetKeyDown(KeyCode.Return) && dashTime <= 0f)
         {
-            Messenger.Broadcast(MsgType.ChangeBubbleBar, 2, -GlobalData.DashBubbleConsumption);
             StartDash();
         }
 
@@ -154,8 +152,12 @@ public class PlayerMove : MonoBehaviour
 
             GameObject bubblePrefab = Resources.Load<GameObject>("Prefabs/Map/LittleBubble");
             GameObject bubbleInstance = Instantiate(bubblePrefab, transform.position, Quaternion.identity);
+
+            float bubbleScale = Random.Range(0.5f, 1.2f);
             bubbleInstance.AddComponent<PlayerBubbleTrail>();
+            bubbleInstance.transform.localScale = new Vector3(bubbleScale, bubbleScale, 1);
             bubbleInstance.GetComponent<PlayerBubbleTrail>().SetDirection(Vector2.down);
+            Messenger.Broadcast(MsgType.ChangeBubbleBar, playerNum, -GlobalData.DashBubbleConsumption * bubbleScale);
         }
 
         if (dashDirection != Vector2.zero)
@@ -167,8 +169,12 @@ public class PlayerMove : MonoBehaviour
             GameObject bubblePrefab = Resources.Load<GameObject>("Prefabs/Map/LittleBubble");
             GameObject bubbleInstance = Instantiate(bubblePrefab, transform.position, Quaternion.identity);
             Vector2 bubbleDirection = -dashDirection;
+            
+            float bubbleScale = Random.Range(0.5f, 1.2f);
             bubbleInstance.AddComponent<PlayerBubbleTrail>();
+            bubbleInstance.transform.localScale = new Vector3(bubbleScale, bubbleScale, 1);
             bubbleInstance.GetComponent<PlayerBubbleTrail>().SetDirection(bubbleDirection);
+            Messenger.Broadcast(MsgType.ChangeBubbleBar, playerNum, -GlobalData.DashBubbleConsumption * bubbleScale);
         }
 
         Invoke("EndDash", dashDuration);
