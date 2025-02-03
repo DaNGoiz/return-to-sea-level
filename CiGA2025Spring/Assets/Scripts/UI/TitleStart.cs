@@ -16,7 +16,6 @@ public class TitleStart : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            // 可以有个协程来做淡出效果，做完以后再卸载场景
             Messenger.Broadcast(MsgType.GameStart);
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Title");
         }
