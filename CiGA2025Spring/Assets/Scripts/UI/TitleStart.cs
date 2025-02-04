@@ -12,12 +12,12 @@ public class TitleStart : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Game", UnityEngine.SceneManagement.LoadSceneMode.Additive);
         }
     }
-    void Update()
-    {
-        if (Input.anyKeyDown)
-        {
-            Messenger.Broadcast(MsgType.GameStart);
-            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Title");
-        }
-    }
+    // void Update()
+    // {
+    //     if (Input.anyKeyDown)
+    //     {
+    //         Messenger.Broadcast(MsgType.GameStart);
+    //         UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Title");
+    //     }
+    // }
 }
