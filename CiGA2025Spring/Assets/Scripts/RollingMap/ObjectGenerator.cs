@@ -49,9 +49,11 @@ public class ObjectGenerator : MonoBehaviour
         ObjPreset objPreset = UnderwaterObjPool.GetObj();
         //将物品生成到场景中，并将生成好的物体设置为ObjParent的子物体
         GameObject objCache;
+        int sortingOrder = 0;
         foreach(ObjData data in objPreset.datas)
         {
             objCache = Instantiate(data.obj);
+            objCache.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder++;
             objCache.transform.SetParent(ObjParent.transform, false);
             if (data.randomPosition)
             {
