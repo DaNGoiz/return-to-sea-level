@@ -545,11 +545,11 @@ GameObject:
   - component: {fileID: 9155780112309346696}
   m_Layer: 7
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3668405721980786986
 Transform:
   m_ObjectHideFlags: 0
@@ -5685,7 +5685,7 @@ GameObject:
   - component: {fileID: 719052542625276998}
   m_Layer: 7
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
