@@ -10,4 +10,6 @@ public static class GlobalData
     public const float PlayerInvincibleTime = 1f;
 
     public const float DashBubbleConsumption = 10f;
+    public static bool Player1Selected { get; set; }
+    public static bool Player2Selected { get; set; }
 }

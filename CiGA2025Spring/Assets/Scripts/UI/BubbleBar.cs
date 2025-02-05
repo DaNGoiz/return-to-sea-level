@@ -10,7 +10,7 @@ public class BubbleBar : MonoBehaviour
     private float naturalDecreaseValue = 0.5f;
     private Slider slider;
     private Coroutine changeValueCoroutine;
-    private bool canChangeValue = true;
+    private bool canChangeValue = false;
 
     void Start()
     {
