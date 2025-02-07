@@ -8,22 +8,38 @@ public class PlayerSelectResponse : MonoBehaviour
     private GameObject player2component;
     void Start()
     {
-        // 在子物体里寻找带有player1和player2的tag的物体，绑定到component上
+        player1component = transform.Find("Player1").gameObject;
+        player2component = transform.Find("Player2").gameObject;
 
-        // Messenger listener
-        // Messenger.AddListener(MsgType.)
+        Messenger.AddListener<bool>(MsgType.Player1Selected, Player1CompChangeState);
+        Messenger.AddListener<bool>(MsgType.Player2Selected, Player2CompChangeState);
         
-        // 读取存在global data的目前玩家，动态加载玩家框
+        if (GlobalData.Instance.Player1Selected)
+        {
+            Player1CompChangeState(true);
+        }
+        else 
+        {
+            Player1CompChangeState(false);
+        }
+        if (GlobalData.Instance.Player2Selected)
+        {
+            Player2CompChangeState(true);
+        }
+        else 
+        {
+            Player2CompChangeState(false);
+        }
     }
 
     private void Player1CompChangeState(bool isPlayer1Selected)
     {
-        // 这个值等于playercomponent的set active
+        player1component.SetActive(isPlayer1Selected);
     }
 
     private void Player2CompChangeState(bool isPlayer2Selected)
     {
-        // 这个值等于playercomponent的set active
+        player2component.SetActive(isPlayer2Selected);
     }
 
 }
