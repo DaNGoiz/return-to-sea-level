@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 2201469285220987564}
   - component: {fileID: 4759832971905589987}
   - component: {fileID: 9178612391324562628}
+  - component: {fileID: 3473566274513701549}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -255,6 +256,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3473566274513701549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188813115129468023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219d67adb864e27448a9c72a8fc75ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1215278185650619052
 GameObject:
   m_ObjectHideFlags: 0

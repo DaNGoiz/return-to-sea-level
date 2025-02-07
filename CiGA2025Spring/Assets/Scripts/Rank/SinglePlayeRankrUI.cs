@@ -9,6 +9,7 @@ public class SinglePlayeRankrUI : MonoBehaviour
     private TextMeshProUGUI scoreText;
     private TextMeshProUGUI nameText1;
     private TextMeshProUGUI nameText2;
+    private GameObject andSign;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class SinglePlayeRankrUI : MonoBehaviour
         scoreText = transform.Find("Score").GetComponent<TextMeshProUGUI>();
         nameText1 = transform.Find("Name1").GetComponent<TextMeshProUGUI>();
         nameText2 = transform.Find("Name2").GetComponent<TextMeshProUGUI>();
+        andSign = transform.Find("&").gameObject;
         SetPlayerInfo(5, 100, "Player1", "Player2");
     }
 
@@ -38,6 +40,19 @@ public class SinglePlayeRankrUI : MonoBehaviour
 
     private void SetName(string name1, string name2)
     {
+        if (name1 == "" && name2 != "")
+        {
+            nameText1.text = "<wave>" + name2;
+            nameText1.color = nameText2.color;
+            andSign.SetActive(false);
+            return;
+        }
+        if (name1 != "" && name2 == "")
+        {
+            nameText1.text = "<wave>" + name1;
+            andSign.SetActive(false);
+            return;
+        }
         nameText1.text = "<wave>" + name1;
         nameText2.text = "<wave>" + name2;
     }

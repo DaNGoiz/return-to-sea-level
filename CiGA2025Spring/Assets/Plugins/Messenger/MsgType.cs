@@ -20,5 +20,4 @@ public static class MsgType
 
     public static string Player1Selected = nameof(Player1Selected);
     public static string Player2Selected = nameof(Player2Selected);
-    // public static string GetSceneByName
 }
