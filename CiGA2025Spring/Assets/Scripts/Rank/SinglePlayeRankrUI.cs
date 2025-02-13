@@ -47,12 +47,13 @@ public class SinglePlayeRankrUI : MonoBehaviour
             andSign.SetActive(false);
             return;
         }
-        if (name1 != "" && name2 == "")
+        else if (name1 != "" && name2 == "")
         {
             nameText1.text = "<wave>" + name1;
             andSign.SetActive(false);
             return;
         }
+
         nameText1.text = "<wave>" + name1;
         nameText2.text = "<wave>" + name2;
     }
