@@ -11,6 +11,8 @@ ShaderVariantCollection:
   - first: {fileID: 4800000, guid: 96246b1ead49a4c5a996fd477bc5a117, type: 3}
     second:
       variants:
+      - keywords: COLOR_CONTRAST SAMPLING_RGB_SHIFT UNITY_UI_ALPHACLIP
+        passType: 0
       - keywords: COLOR_REPLACE SAMPLING_BLUR_FAST SHADOW_COLOR_REPLACE
         passType: 0
       - keywords: SAMPLING_BLUR_FAST SHADOW_COLOR_REPLACE TARGET_HUE TONE_GRAYSCALE
@@ -18,7 +20,11 @@ ShaderVariantCollection:
         passType: 0
       - keywords: SAMPLING_BLUR_FAST TRANSITION_COLOR_MULTIPLY_ADDITIVE TRANSITION_SHINY
         passType: 0
+      - keywords: SAMPLING_BLUR_FAST UNITY_UI_ALPHACLIP
+        passType: 0
       - keywords: SAMPLING_BLUR_MEDIUM TRANSITION_COLOR_MULTIPLY_ADDITIVE TRANSITION_SHINY
+        passType: 0
+      - keywords: SAMPLING_BLUR_MEDIUM UNITY_UI_ALPHACLIP
         passType: 0
       - keywords: SAMPLING_EDGE_ALPHA
         passType: 0
@@ -26,9 +32,17 @@ ShaderVariantCollection:
         passType: 0
       - keywords: SAMPLING_EDGE_LUMINANCE TRANSITION_COLOR_MULTIPLY_ADDITIVE TRANSITION_SHINY
         passType: 0
+      - keywords: SAMPLING_EDGE_LUMINANCE UNITY_UI_ALPHACLIP
+        passType: 0
       - keywords: SAMPLING_PIXELATION TRANSITION_COLOR_MULTIPLY_ADDITIVE TRANSITION_SHINY
         passType: 0
+      - keywords: SAMPLING_PIXELATION UNITY_UI_ALPHACLIP
+        passType: 0
+      - keywords: SAMPLING_RGB_SHIFT TARGET_LUMINANCE UNITY_UI_ALPHACLIP
+        passType: 0
       - keywords: SAMPLING_RGB_SHIFT TRANSITION_COLOR_MULTIPLY_ADDITIVE TRANSITION_SHINY
+        passType: 0
+      - keywords: SAMPLING_RGB_SHIFT UNITY_UI_ALPHACLIP
         passType: 0
       - keywords: SHADOW_COLOR_REPLACE TRANSITION_COLOR_REPLACE TRANSITION_MELT
         passType: 0
@@ -43,6 +57,8 @@ ShaderVariantCollection:
       - keywords: TONE_RETRO TRANSITION_COLOR_MULTIPLY_ADDITIVE TRANSITION_SHINY
         passType: 0
       - keywords: TONE_SEPIA TRANSITION_COLOR_MULTIPLY_ADDITIVE TRANSITION_SHINY
+        passType: 0
+      - keywords: TONE_SEPIA UNITY_UI_ALPHACLIP
         passType: 0
       - keywords: TRANSITION_BURN TRANSITION_COLOR_MULTIPLY_ADDITIVE
         passType: 0

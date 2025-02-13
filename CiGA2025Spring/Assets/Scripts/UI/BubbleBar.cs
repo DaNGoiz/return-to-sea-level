@@ -19,6 +19,7 @@ public class BubbleBar : MonoBehaviour
         Messenger.AddListener<int, float>(MsgType.ChangeBubbleBar, ChangeValue);
         Messenger.AddListener(MsgType.ResetPlayer, ResetValue);
         Messenger.AddListener(MsgType.GameStart, GameStart);
+        Messenger.AddListener(MsgType.GameOver, () => canChangeValue = false);
     }
 
     void Update()
