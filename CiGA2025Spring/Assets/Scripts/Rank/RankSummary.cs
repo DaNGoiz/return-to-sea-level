@@ -8,6 +8,7 @@ public class RankSummary : MonoBehaviour
     void Start()
     {
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
+
         text.text = $"第<wave>{PlayerPrefs.GetInt("CurrentRank")}</wave>名";
     }
 }

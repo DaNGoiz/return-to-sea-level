@@ -1,26 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;  // 需要添加这个命名空间来处理场景加载事件
+using UnityEngine.SceneManagement;
 
 public class PlayerSelectResponse : MonoBehaviour
 {
-    public GameObject player1component;
-    public GameObject player2component;
+    private GameObject player1component;
+    private GameObject player2component;
 
     void Start()
     {
-        // 订阅场景加载事件，当场景加载时重新初始化玩家组件
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        // 初次查找带有 Player1 和 Player2 标签的对象
         InitializePlayerComponents();
 
-        // 添加事件监听器
         Messenger.AddListener<bool>(MsgType.Player1Selected, Player1CompChangeState);
         Messenger.AddListener<bool>(MsgType.Player2Selected, Player2CompChangeState);
         
-        // 根据 GlobalData 设置玩家选择状态
         if (GlobalData.Player1Selected)
         {
             Player1CompChangeState(true);
@@ -40,13 +36,11 @@ public class PlayerSelectResponse : MonoBehaviour
         }
     }
 
-    // 场景加载时重新查找组件
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         InitializePlayerComponents();
     }
 
-    // 查找 Player1 和 Player2 组件
     void InitializePlayerComponents()
     {
         foreach (Transform child in transform)
@@ -86,13 +80,11 @@ public class PlayerSelectResponse : MonoBehaviour
         }
     }
 
-    // 确保在销毁该对象时移除监听器，防止内存泄漏
     void OnDestroy()
     {
         Messenger.RemoveListener<bool>(MsgType.Player1Selected, Player1CompChangeState);
         Messenger.RemoveListener<bool>(MsgType.Player2Selected, Player2CompChangeState);
 
-        // 取消订阅场景加载事件
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

@@ -18,7 +18,7 @@ public class SinglePlayeRankrUI : MonoBehaviour
         nameText1 = transform.Find("Name1").GetComponent<TextMeshProUGUI>();
         nameText2 = transform.Find("Name2").GetComponent<TextMeshProUGUI>();
         andSign = transform.Find("&").gameObject;
-        SetPlayerInfo(5, 100, "Player1", "Player2");
+        SetPlayerInfo(5, 100, "", "");
     }
 
     public void SetPlayerInfo(int rank, int score, string name1, string name2)

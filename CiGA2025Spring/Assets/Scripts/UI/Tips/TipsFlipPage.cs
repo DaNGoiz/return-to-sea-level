@@ -7,24 +7,23 @@ public class TipsFlipPage : MonoBehaviour
 {
     private Button button;
     public bool isNextPage = true; // true for next page, false for previous page
-    private GameObject tips;
+
 
     void Start()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(FlipPage);
-        tips = GameObject.Find("Tips");
     }
 
     private void FlipPage()
     {
         if (isNextPage)
         {
-            tips.GetComponent<Tips>().NextPage();
+            Messenger.Broadcast<bool>(MsgType.TipsFlipPage, true);
         }
         else
         {
-            tips.GetComponent<Tips>().PreviousPage();
+            Messenger.Broadcast<bool>(MsgType.TipsFlipPage, false);
         }
     }
 }
