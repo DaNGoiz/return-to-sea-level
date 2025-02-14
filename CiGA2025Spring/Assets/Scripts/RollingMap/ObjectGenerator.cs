@@ -22,7 +22,7 @@ public class ObjectGenerator : MonoBehaviour
             if (GlobalData.Distance - lastGenDistance >= GenInterval)
             {
                 //触发生成物体的逻辑
-                Generate();
+                while (!Generate()) { }
                 lastGenDistance = GlobalData.Distance;
                 GenInterval = GlobalData.DefaultObjGenInterval - 3f * ( DifficultyManager.DiffFactor / 5) * Random.Range(0.8f, 1.2f);
             }
@@ -34,7 +34,7 @@ public class ObjectGenerator : MonoBehaviour
         IsEnabled = false;
         GenInterval = GlobalData.DefaultObjGenInterval;
         ObjParent = new("UnderwaterObjects");
-        ObjParent.transform.position = new Vector3(0, 7, 0);
+        ObjParent.transform.position = new Vector3(0, 8, 0);
         UnderwaterObjPool.Presets = Resources.Load<UnderwaterObjPool>("Prefabs/Map/ObjPresets/Difficulty/UnderwaterObjPool").presets;
         Debug.Log("");
     }
@@ -44,7 +44,7 @@ public class ObjectGenerator : MonoBehaviour
         IsEnabled = false;
         GenInterval = GlobalData.DefaultObjGenInterval;
     }
-    public void Generate()
+    public bool Generate()
     {
         ObjPreset objPreset = UnderwaterObjPool.GetObj();
         //将物品生成到场景中，并将生成好的物体设置为ObjParent的子物体
@@ -53,6 +53,14 @@ public class ObjectGenerator : MonoBehaviour
         foreach(ObjData data in objPreset.datas)
         {
             objCache = Instantiate(data.obj);
+            if (!GlobalData.Player1Selected || !GlobalData.Player2Selected)
+            {
+                if (objCache.GetComponent<PufferKingInflatable>())
+                {
+                    Destroy(objCache);
+                    return false;
+                }
+            }
             objCache.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder++;
             objCache.transform.SetParent(ObjParent.transform, false);
             if (data.randomPosition)
@@ -75,5 +83,6 @@ public class ObjectGenerator : MonoBehaviour
                 objCache.transform.localScale = new Vector3(-objCache.transform.localScale.x, objCache.transform.localScale.y, 1);
             }
         }
+        return true;
     }
 }

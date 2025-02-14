@@ -39,7 +39,7 @@ public class InputNameEnsureButton : MonoBehaviour
                     int rank = i + 1;
                     PlayerPrefs.SetInt("CurrentRank", rank);
                 }
-                Debug.Log($"{records[i].name1} + {records[i].name2} : {records[i].distance}");
+                // Debug.Log($"{records[i].name1} + {records[i].name2} : {records[i].distance}");
             }
 
             // Instantiate and display the rank UI
@@ -52,8 +52,20 @@ public class InputNameEnsureButton : MonoBehaviour
     // Save player names and distance to PlayerPrefs
     public void Save(string p1, string p2, float distance)
     {
+        if (GlobalData.Player1Selected && GlobalData.Player2Selected)
+        {
+            if (p1 == "" || p1 == null)
+            {
+                p1 = "anonymous";
+            }
+            if (p2 == "" || p2 == null)
+            {
+                p2 = "anonymous";
+            }
+            
+        }
         string key = p1 + '+' + p2;
-
+        
         // Retrieve existing records from PlayerPrefs
         string storedRecords = PlayerPrefs.GetString(key, string.Empty);
         List<float> records = new List<float>();
