@@ -52,16 +52,20 @@ public class InputNameEnsureButton : MonoBehaviour
     // Save player names and distance to PlayerPrefs
     public void Save(string p1, string p2, float distance)
     {
-        if (p1 == "" || p1 == null)
+        if (GlobalData.Player1Selected && GlobalData.Player2Selected)
         {
-            p1 = "anonymous";
-        }
-        if (p2 == "" || p2 == null)
-        {
-            p2 = "anonymous";
+            if (p1 == "" || p1 == null)
+            {
+                p1 = "anonymous";
+            }
+            if (p2 == "" || p2 == null)
+            {
+                p2 = "anonymous";
+            }
+            
         }
         string key = p1 + '+' + p2;
-
+        
         // Retrieve existing records from PlayerPrefs
         string storedRecords = PlayerPrefs.GetString(key, string.Empty);
         List<float> records = new List<float>();
