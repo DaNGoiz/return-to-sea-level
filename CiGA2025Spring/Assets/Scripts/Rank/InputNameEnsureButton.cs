@@ -13,40 +13,49 @@ public class InputNameEnsureButton : MonoBehaviour
     private void Start()
     {
         button = GetComponent<Button>();
-        inputField1 = transform.parent.Find("NameLabel1").GetComponent<TMP_InputField>();
-        inputField2 = transform.parent.Find("NameLabel2").GetComponent<TMP_InputField>();
+        inputField1 = transform.parent.Find("NameLabel1")?.GetComponent<TMP_InputField>();
+        inputField2 = transform.parent.Find("NameLabel2")?.GetComponent<TMP_InputField>();
 
-        button.onClick.AddListener(() =>
+        if (button != null && inputField1 != null && inputField2 != null)
         {
-            string name1 = inputField1.text;
-            string name2 = inputField2.text;
-
-            // Save the record to PlayerPrefs
-            Save(name1, name2, GlobalData.Distance);
-
-            // Load all the records
-            List<(string name1, string name2, float distance)> records = LoadAllRecord();
-
-            // Sort the records by distance in descending order
-            records.Sort((a, b) => b.distance.CompareTo(a.distance));
-
-            // Find the rank for the current entry
-            for (int i = 0; i < records.Count; i++)
+            button.onClick.AddListener(() =>
             {
-                float tolerance = 0.01f;
-                if (Mathf.Abs(records[i].distance - GlobalData.Distance) < tolerance)
-                {
-                    int rank = i + 1;
-                    PlayerPrefs.SetInt("CurrentRank", rank);
-                }
-                // Debug.Log($"{records[i].name1} + {records[i].name2} : {records[i].distance}");
-            }
+                string name1 = inputField1.text;
+                string name2 = inputField2.text;
 
-            // Instantiate and display the rank UI
-            GameObject rankPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Ranks"));
-            rankPrefab.transform.SetParent(GameObject.Find("Canvas_Summary(Clone)").transform, false);
-            transform.parent.gameObject.SetActive(false);
-        });
+                // Save the record to PlayerPrefs
+                Save(name1, name2, GlobalData.Distance);
+
+                // Load all the records
+                List<(string name1, string name2, float distance)> records = LoadAllRecord();
+
+                // Sort the records by distance in descending order
+                records.Sort((a, b) => b.distance.CompareTo(a.distance));
+
+                // Find the rank for the current entry
+                for (int i = 0; i < records.Count; i++)
+                {
+                    float tolerance = 0.01f;
+                    if (Mathf.Abs(records[i].distance - GlobalData.Distance) < tolerance)
+                    {
+                        int rank = i + 1;
+                        PlayerPrefs.SetInt("CurrentRank", rank);
+                    }
+                }
+
+                // Instantiate and display the rank UI
+                GameObject rankPrefab = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Ranks"));
+                if (rankPrefab != null)
+                {
+                    rankPrefab.transform.SetParent(GameObject.Find("Canvas_Summary(Clone)").transform, false);
+                }
+                transform.parent.gameObject.SetActive(false);
+            });
+        }
+        else
+        {
+            Debug.LogError("Button or InputFields are not found.");
+        }
     }
 
     // Save player names and distance to PlayerPrefs
@@ -54,18 +63,17 @@ public class InputNameEnsureButton : MonoBehaviour
     {
         if (GlobalData.Player1Selected && GlobalData.Player2Selected)
         {
-            if (p1 == "" || p1 == null)
+            if (string.IsNullOrEmpty(p1))
             {
                 p1 = "anonymous";
             }
-            if (p2 == "" || p2 == null)
+            if (string.IsNullOrEmpty(p2))
             {
                 p2 = "anonymous";
             }
-            
         }
         string key = p1 + '+' + p2;
-        
+
         // Retrieve existing records from PlayerPrefs
         string storedRecords = PlayerPrefs.GetString(key, string.Empty);
         List<float> records = new List<float>();

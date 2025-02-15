@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4a74abd2d4882fd4782980dc845d8f35
+guid: 35d18bcdba718ae40bd4265eed1bacf7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button_tips_0
+      name: button_Wepsi_0
       rect:
         serializedVersion: 2
-        x: 130
-        y: 159
-        width: 77
-        height: 121
+        x: 101
+        y: 23
+        width: 125
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93d561502ce898347a3f09da1250e05e
-      internalID: -25216627
+      spriteID: 610e1a4a917b6f04ebe9eae9d5398aea
+      internalID: 238481148
       vertices: []
       indices: 
       edges: []
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      button_tips_0: -25216627
+      button_Wepsi_0: 238481148
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -11,6 +11,8 @@ ShaderVariantCollection:
   - first: {fileID: 4800000, guid: 96246b1ead49a4c5a996fd477bc5a117, type: 3}
     second:
       variants:
+      - keywords: 
+        passType: 0
       - keywords: COLOR_CONTRAST SAMPLING_RGB_SHIFT UNITY_UI_ALPHACLIP
         passType: 0
       - keywords: COLOR_REPLACE SAMPLING_BLUR_FAST SHADOW_COLOR_REPLACE
@@ -52,9 +54,15 @@ ShaderVariantCollection:
         passType: 0
       - keywords: TONE_NEGATIVE TRANSITION_COLOR_MULTIPLY_ADDITIVE TRANSITION_SHINY
         passType: 0
+      - keywords: TONE_POSTERIZE
+        passType: 0
       - keywords: TONE_POSTERIZE TRANSITION_COLOR_MULTIPLY_ADDITIVE TRANSITION_SHINY
         passType: 0
+      - keywords: TONE_RETRO
+        passType: 0
       - keywords: TONE_RETRO TRANSITION_COLOR_MULTIPLY_ADDITIVE TRANSITION_SHINY
+        passType: 0
+      - keywords: TONE_SEPIA
         passType: 0
       - keywords: TONE_SEPIA TRANSITION_COLOR_MULTIPLY_ADDITIVE TRANSITION_SHINY
         passType: 0

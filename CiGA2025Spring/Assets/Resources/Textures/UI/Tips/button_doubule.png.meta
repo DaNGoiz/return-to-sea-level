@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4a74abd2d4882fd4782980dc845d8f35
+guid: 482b71374e76a5947af5324e14307508
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -126,10 +126,10 @@ TextureImporter:
       name: button_tips_0
       rect:
         serializedVersion: 2
-        x: 130
-        y: 159
-        width: 77
-        height: 121
+        x: 101
+        y: 8
+        width: 184
+        height: 133
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93d561502ce898347a3f09da1250e05e
-      internalID: -25216627
+      spriteID: 02b71628d8ed520489c222bbafc91b28
+      internalID: 761189479
       vertices: []
       indices: 
       edges: []
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      button_tips_0: -25216627
+      button_tips_0: 761189479
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
